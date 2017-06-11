@@ -1,0 +1,128 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<title>Korued</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="user-scalable=no, initial-scale=1.0, maximum-scale=1.0" />
+		<!-- Tocas UI：CSS 與元件 -->
+<link rel="stylesheet" href="//cdn.rawgit.com/TeaMeow/TocasUI/2.3.2/dist/tocas.css">
+<!-- Tocas JS：模塊與 JavaScript 函式 -->
+<script src="//cdn.rawgit.com/TeaMeow/TocasUI/2.3.2/dist/tocas.js"></script>
+		<!-- Scripts -->
+		<script src="//cdn.gnehs.com.tw/cdn/console_log.js" charset="big5"></script>
+		<script src="//cdn.gnehs.com.tw/cdn/jquery.min.js"></script>
+		<script src="/cdn/pace.min.js"></script>
+		
+		<!-- icon -->
+		<link rel="shortcut icon" href="korued.jpg">
+
+		<!-- css -->
+		<link rel="stylesheet" href="https://cdn.gnehs.com.tw/cdn/animate.css">
+		<style>
+		@keyframes load {
+			from {
+				transform: rotate(0deg);
+			}
+			to{
+				transform: rotate(-360deg);
+			}
+		}
+		.pace-activity {
+			width: 40px;
+			height: 40px;
+			animation-duration: .7s;
+			animation-name: load;
+			animation-iteration-count: infinite;
+			border: 2px solid rgba(0,0,0,0.68);
+			border-right: 2px solid rgba(0,0,0,0);
+			border-radius: 100%;
+			position: absolute;
+			overflow: hidden;
+		}
+		.pace-inactive {
+			display: none;
+		}
+		.pace-progress{
+			transform: translate3d(0, 0, 0) !important;
+			position: absolute;
+			border-radius: 100%;
+			width: 40px;
+			height: 40px;
+			font-size: 18x;
+			line-height: 40px;
+			color: #7B7B7B;
+		}
+		.pace-progress:before{
+			content: attr(data-progress);
+		}
+		.pace{
+			pointer-events: none;
+			user-select: none;
+			width: 40px;
+			height: 40px;
+			z-index: 2000;
+			position: fixed;
+			margin: auto;
+			top: 100;
+			left: 100;
+			right: 0;
+			bottom: 0;
+			line-height: 100px;
+			font-size: 20px;
+			color: #7e7c7c;
+			text-align: center;
+		}
+		</style>
+	</head>
+	<body>
+		<div class="ts heading slate">
+			<div class="ts narrow container">
+				<span class="header">Korued</span>
+				<span class="description">毀滅世界吧!</span>
+			</div>
+		</div>
+		<br>
+		<div class="ts narrow container">
+			<div class="ts doubling four cards">
+			
+				<a class="ts card" href="https://cdn.gnehs.com.tw/korued/setup_koru.exe" target="_blank">
+					<div class="content">
+						<div class="header">
+							setup_koru.exe
+							<div class="sub header">由@Senoc開發</div>
+						</div>
+						<div class="description">
+							<p>在瞬間內摧毀您的電腦</p>
+						</div>
+					</div>
+				</a>
+				
+				<a class="ts card" href="https://cdn.gnehs.com.tw/korued/">
+					<div class="content">
+						<div class="header">
+							Korued@Web
+							<div class="sub header">棒棒勝拿網路上的程式碼亂湊的</div>
+						</div>
+						<div class="description">
+							<p>在瞬間內讓您的電腦當機</p>
+						</div>
+					</div>
+				</a>
+				
+				<a class="ts card" href="https://telegram.me/KORUED">
+					<div class="content">
+						<div class="header">
+							Korued@Telegram
+							<div class="sub header">歡迎來到摳乳的 Group</div>
+						</div>
+						<div class="description">
+							<p>加入 KORUED 氣場更加強大!!</p>
+						</div>
+					</div>
+				</a>
+				
+			</div>
+		</div>
+</body>
+
+</html>

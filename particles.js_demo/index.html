@@ -1,0 +1,90 @@
+﻿<!DOCTYPE HTML>
+<html data-ts-native>
+	<head>
+		<title>Particles.js demo</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+		<!-- Tocas UI：CSS 與元件 -->
+<link rel="stylesheet" href="//cdn.rawgit.com/TeaMeow/TocasUI/2.3.2/dist/tocas.css">
+<!-- Tocas JS：模塊與 JavaScript 函式 -->
+<script src="//cdn.rawgit.com/TeaMeow/TocasUI/2.3.2/dist/tocas.js"></script>
+		<!-- SEO -->
+		<meta name="keywords" content="棒棒勝,Particles.js">
+		<meta name="author" content="棒棒勝">
+		<meta name="description" content="展示 Particles.js 的強大">
+		<!-- open graph data -->
+		<meta property="og:title" content="Particles.js demo" />
+		<meta property="og:type" content="website" />
+		<meta property="og:image" content="index.jpg" />
+		<meta property="og:description" content="展示 Particles.js 的強大" /> 
+		<meta property="article:author" content="https://www.facebook.com/gnehsouo/">
+		<style>
+		#particles-js{
+			background-color: #FFF;
+			background-image: url('');
+			background-size: cover;
+			background-position: 50% 50%;
+			background-repeat: no-repeat;
+			position: fixed; 
+			z-index: -9487; 
+			width: 100vw; 
+			height: 100vh;
+		}
+		.ts.card{
+			background-color: rgba(255, 255, 255, 0.7);
+		}
+		</style>
+	</head>
+	<body>
+		<div id="particles-js"></div>
+		<nav class="ts horizontally scrollable large fluid borderless pure basic menu">
+			<div class="ts narrow container">
+				<a href="#" class="item router-link-active">Particles.js demo</a>
+				<a href="https://cdn.gnehs.com.tw/" class="item">棒棒勝 OuO</a>
+			</div>
+		</nav>
+		<br>
+		<div class="ts narrow container">
+			<div class="ts stackable three waterfall cards">
+			
+				<a class="ts card" href="xiaoxiaoan.html">
+					<div class="content">
+						<div class="header">洨洨安</div>
+						<div class="description">
+							<p>吃掉你的效能!</p>
+						</div>
+					</div>
+					<div class="extra content">
+						<i class="edit icon"></i>2017.05.13 最後更新
+					</div>
+					<div class="symbol">
+						<i class="smile icon"></i>
+					</div>
+				</a>
+				
+				<a class="ts card" href="flower.html">
+					<div class="content">
+						<div class="header">花花</div>
+						<div class="description">
+							<p>Facebook 的那個!</p>
+						</div>
+					</div>
+					<div class="extra content">
+						<i class="edit icon"></i>2017.05.13 最後更新
+					</div>
+					<div class="symbol">
+						<i class="facebook icon"></i>
+					</div>
+				</a>
+				
+			</div>
+		</div>
+		
+		<script src="particles.min.js"></script>
+		<script>
+		particlesJS.load('particles-js', 'index.json', function() {
+			console.log('callback - particles.js config loaded');
+		});
+		</script>
+	</body>
+</html>
