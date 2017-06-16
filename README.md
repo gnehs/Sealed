@@ -14,3 +14,5 @@
 [korued](https://gnehs.github.io/Sealed/korued/)
 
 [2017.04 月春番](https://gnehs.github.io/Sealed/anime/Anime2017.4.html)
+
+[棒棒勝天氣](https://gnehs.github.io/Sealed/weather/) [[舊版](https://gnehs.github.io/Sealed/weather/index_old.05.28.html) [除錯](https://gnehs.github.io/Sealed/weather/debug.html)]
