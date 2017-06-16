@@ -1,0 +1,177 @@
+﻿<!DOCTYPE HTML>
+<html data-ts-native>
+
+	<head>
+		<title>棒棒勝天氣 除錯用</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+		<style>
+			#map {
+				height: 500px;
+				width: 100%;
+			}
+		</style>
+
+		<!-- icon -->
+		<link rel="shortcut icon" href="Weather_Icon.png">
+
+		<!-- Script -->
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/tocas-ui/2.3.2/tocas.js"></script>
+
+		<!-- Style -->
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tocas-ui/2.3.2/tocas.css">
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/weather-icons/2.0.10/css/weather-icons.min.css">
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.css">
+	</head>
+
+	<body>
+		<nav class="ts horizontally scrollable large fluid borderless pure basic menu">
+			<div class="ts narrow container">
+				<a href="index.html" class="item router-link-active"><i class="cloud icon"></i>棒棒勝天氣</a>
+				<div class="right menu">
+					<div class="fitted item">
+						<div class="ts borderless right icon basic input">
+							<input type="text" id="input" placeholder="查詢城市" value="棒棒勝">
+							<i class="search link icon" onclick="SearchWeather()"></i>
+						</div>
+					</div>
+				</div>
+			</div>
+		</nav>
+		<br>
+		<div class="ts narrow container">
+			<div class="ts heading slate">
+				<span class="header">這是一個測試用的頁面</span>
+				<span class="description">你或許不該進來這裡</span>
+			</div>
+
+			<div class="ts section divider"></div>
+
+			<div class="ts stackable grid" id="HeaderWeatherDebug">
+				<div class="sixteen wide column">
+					<h2 class="ts center aligned header" id="CityNameDebug">貓咪</h2>
+				</div>
+				<div class="doubling four column row">
+					<div class="column">
+						<h4 class="ts dividing center aligned header">今天</h4>
+						<h4 class="ts center aligned header" id="TodayDebug"></h4>
+					</div>
+					<div class="column">
+						<h4 class="ts dividing center aligned header">明天</h4>
+						<h4 class="ts center aligned header" id="Day1Debug"></h4>
+					</div>
+					<div class="column">
+						<h4 class="ts dividing center aligned header">後天</h4>
+						<h4 class="ts center aligned header" id="Day2Debug"></h4>
+					</div>
+					<div class="column">
+						<h4 class="ts dividing center aligned header">三天後</h4>
+						<h4 class="ts center aligned header" id="Day3Debug"></h4>
+					</div>
+					<div class="column">
+						<h4 class="ts dividing center aligned header">四天後</h4>
+						<h4 class="ts center aligned header" id="Day4Debug"></h4>
+					</div>
+					<div class="column">
+						<h4 class="ts dividing center aligned header">五天後</h4>
+						<h4 class="ts center aligned header" id="Day5Debug"></h4>
+					</div>
+					<div class="column">
+						<h4 class="ts dividing center aligned header">六天後</h4>
+						<h4 class="ts center aligned header" id="Day6Debug"></h4>
+					</div>
+					<div class="column">
+						<h4 class="ts dividing center aligned header">七天後</h4>
+						<h4 class="ts center aligned header" id="Day7Debug"></h4>
+					</div>
+				</div>
+			</div>
+
+		</div>
+	</body>
+	<script>
+		(function (i, s, o, g, r, a, m) {
+			i['GoogleAnalyticsObject'] = r; i[r] = i[r] || function () {
+				(i[r].q = i[r].q || []).push(arguments)
+			}, i[r].l = 1 * new Date(); a = s.createElement(o),
+				m = s.getElementsByTagName(o)[0]; a.async = 1; a.src = g; m.parentNode.insertBefore(a, m)
+		})(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga');
+		ga('create', 'UA-46944346-10', 'auto');
+		ga('send', 'pageview');
+
+	</script>
+	<script>
+		// http://duckfly-tw.blogspot.tw/2015/02/yql-yahoo-weather-api.html
+		//查詢城市功能(測試)
+		// ~ 偵測 Enter
+		$('#input').keypress(function (event) {
+			if (event.which === 13) {
+				SearchWeather();
+			}
+		});
+		// ~ 如果偵測到 Enter 或是按下查詢
+		function SearchWeather() {
+			var customCity = document.getElementById("input").value
+			var jsonCity = "https://query.yahooapis.com/v1/public/yql?q=select * from weather.forecast where woeid in (select woeid from geo.places(1) where text='" + customCity + "') %20and%20u%3D%22c%22&format=json&callback=citySearch";
+			$("#HeaderWeatherDebug").removeClass("animated zoomIn"); //移除預先載入的動畫Class
+			$.getScript(jsonCity); //動態載入 JS 然後觸發 citySearch
+		};
+
+		//透過搜尋觸發的城市查詢功能
+		var citySearch = function (json) {
+			if (json.query.results === null) {
+				console.log("讀取失敗!");
+				$("#CityNameDebug").html(document.getElementById("input").value + "<div class=\"sub header\">讀取失敗!</div>");
+			}
+			var code = weather_con[json.query.results.channel.item.condition.code.toString()];
+			var icon = weather_icon[json.query.results.channel.item.condition.code.toString()];
+			var temp = json.query.results.channel.item.forecast[0].low + "℃ ~ " + json.query.results.channel.item.forecast[0].high + "℃";
+			var CityNameEnglish = json.query.results.channel.location.city;
+			var sunrise = json.query.results.channel.astronomy.sunrise;
+			var sunset = json.query.results.channel.astronomy.sunset;
+			var sun = "<i class='wi wi-sunrise'></i>" + sunrise + " / " + "<i class='wi wi-sunset'></i>" + sunset;
+			var forecastDay1temp = json.query.results.channel.item.forecast[1].low + "℃ ~ " + json.query.results.channel.item.forecast[1].high + "℃";
+			var forecastDay1code = weather_con[json.query.results.channel.item.forecast[1].code.toString()];
+			var forecastDay1icon = weather_icon[json.query.results.channel.item.forecast[1].code.toString()];
+			var forecastDay2temp = json.query.results.channel.item.forecast[2].low + "℃ ~ " + json.query.results.channel.item.forecast[2].high + "℃";
+			var forecastDay2code = weather_con[json.query.results.channel.item.forecast[2].code.toString()];
+			var forecastDay2icon = weather_icon[json.query.results.channel.item.forecast[2].code.toString()];
+			var forecastDay3temp = json.query.results.channel.item.forecast[3].low + "℃ ~ " + json.query.results.channel.item.forecast[3].high + "℃";
+			var forecastDay3code = weather_con[json.query.results.channel.item.forecast[3].code.toString()];
+			var forecastDay3icon = weather_icon[json.query.results.channel.item.forecast[3].code.toString()];
+			var forecastDay4temp = json.query.results.channel.item.forecast[4].low + "℃ ~ " + json.query.results.channel.item.forecast[4].high + "℃";
+			var forecastDay4code = weather_con[json.query.results.channel.item.forecast[4].code.toString()];
+			var forecastDay4icon = weather_icon[json.query.results.channel.item.forecast[4].code.toString()];
+			var forecastDay5temp = json.query.results.channel.item.forecast[5].low + "℃ ~ " + json.query.results.channel.item.forecast[5].high + "℃";
+			var forecastDay5code = weather_con[json.query.results.channel.item.forecast[5].code.toString()];
+			var forecastDay5icon = weather_icon[json.query.results.channel.item.forecast[5].code.toString()];
+			var forecastDay6temp = json.query.results.channel.item.forecast[6].low + "℃ ~ " + json.query.results.channel.item.forecast[6].high + "℃";
+			var forecastDay6code = weather_con[json.query.results.channel.item.forecast[6].code.toString()];
+			var forecastDay6icon = weather_icon[json.query.results.channel.item.forecast[6].code.toString()];
+			var forecastDay7temp = json.query.results.channel.item.forecast[7].low + "℃ ~ " + json.query.results.channel.item.forecast[7].high + "℃";
+			var forecastDay7code = weather_con[json.query.results.channel.item.forecast[7].code.toString()];
+			var forecastDay7icon = weather_icon[json.query.results.channel.item.forecast[7].code.toString()];
+			console.log("讀取城市: " + document.getElementById("input").value + " 成功!");
+			//修改HTML
+			$("#CityNameDebug").html(document.getElementById("input").value + "<div class=\"sub header\">" + CityNameEnglish + " // " + sun + "</div>");
+			$("#TodayDebug").html("<i class='wi " + icon + "'></i> " + temp + "<div class=\"sub header\">" + code + "</div>");
+			$("#Day1Debug").html("<i class='wi " + forecastDay1icon + "'></i> " + forecastDay1temp + "<div class=\"sub header\">" + forecastDay1code + "</div>");
+			$("#Day2Debug").html("<i class='wi " + forecastDay2icon + "'></i> " + forecastDay2temp + "<div class=\"sub header\">" + forecastDay2code + "</div>");
+			$("#Day3Debug").html("<i class='wi " + forecastDay3icon + "'></i> " + forecastDay3temp + "<div class=\"sub header\">" + forecastDay3code + "</div>");
+			$("#Day4Debug").html("<i class='wi " + forecastDay4icon + "'></i> " + forecastDay4temp + "<div class=\"sub header\">" + forecastDay4code + "</div>");
+			$("#Day5Debug").html("<i class='wi " + forecastDay5icon + "'></i> " + forecastDay5temp + "<div class=\"sub header\">" + forecastDay5code + "</div>");
+			$("#Day6Debug").html("<i class='wi " + forecastDay6icon + "'></i> " + forecastDay6temp + "<div class=\"sub header\">" + forecastDay6code + "</div>");
+			$("#Day7Debug").html("<i class='wi " + forecastDay7icon + "'></i> " + forecastDay7temp + "<div class=\"sub header\">" + forecastDay7code + "</div>");
+			$("#HeaderWeatherDebug").addClass("animated zoomIn"); //動畫效果
+		};
+
+		//定義天氣型態和 ICON
+		weather_con = { "0": "龍捲風", "1": "颱風", "2": "颶風", "3": "強雷陣雨", "4": "雷陣雨", "5": "混合雨雪", "6": "混合雨雪", "7": "混合雨雪", "8": "冰凍小雨", "9": "小雨", "10": "凍雨", "11": "陣雨", "12": "陣雨", "13": "飄雪", "14": "陣雪", "15": "吹雪", "16": "下雪", "17": "冰雹", "18": "雨雪", "19": "多塵", "20": "多霧", "21": "陰霾", "22": "多煙", "23": "呼呼狂風", "24": "有風", "25": "冷", "26": "多雲", "27": "多雲時晴", "28": "多雲時晴", "29": "多雲時晴", "30": "多雲時晴", "31": "晴朗", "32": "晴朗", "33": "晴朗", "34": "晴朗", "35": "雨和冰雹", "36": "炎熱", "37": "雷陣雨", "38": "零星雷陣雨", "39": "零星雷陣雨", "40": "零星雷陣雨", "41": "大雪", "42": "零星陣雪", "43": "大雪", "44": "多雲", "45": "雷陣雨", "46": "陣雪", "47": "雷陣雨", "3200": "資料錯誤" }; weather_icon = { "1": "wi-hurricane", "2": "wi-tornado", "3": "wi-storm-showers", "4": "wi-storm-showers", "5": "wi-snow", "6": "wi-snow", "7": "wi-snow", "8": "wi-rain-mix", "9": "wi-rain-mix", "10": "wi-rain", "11": "wi-rain", "12": "wi-rain", "13": "wi-snow", "14": "wi-snow", "15": "wi-sandstorm", "16": "wi-snow", "17": "wi-meteor", "18": "wi-snow", "19": "wi-smog", "20": "wi-smog", "21": "wi-smog", "22": "wi-smog", "23": "wi-strong-wind", "24": "wi-windy", "25": "wi-snowflake-cold", "26": "wi-cloudy", "27": "wi-night-alt-cloudy", "28": "wi-day-cloudy", "29": "wi-night-alt-cloudy", "30": "wi-day-cloudy", "31": "wi-night-clear", "32": "wi-day-sunny", "33": "wi-night-clear", "34": "wi-day-sunny", "35": "wi-meteor", "36": "wi-hot", "37": "wi-sandstorm", "38": "wi-storm-showers", "39": "wi-storm-showers", "40": "wi-storm-showers", "41": "wi-snow", "42": "wi-snow", "43": "wi-snow", "44": "wi-snow", "45": "wi-storm-showers", "46": "wi-snow", "47": "wi-storm-showers" };
+
+	</script>
+	<!-- 載入 #HeaderWeather -->
+	<script src="https://query.yahooapis.com/v1/public/yql?q=select * from weather.forecast where woeid in (select woeid from geo.places(1) where text='棒棒勝') %20and%20u%3D%22c%22&format=json&callback=citySearch"></script>
+
+</html>

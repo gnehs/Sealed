@@ -1,0 +1,579 @@
+﻿<!DOCTYPE HTML>
+<html>
+
+	<head>
+		<title>棒棒勝天氣</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+		<!-- webapp -->
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+		<meta name="apple-mobile-web-app-title" content="棒棒勝天氣">
+		<link rel="apple-touch-startup-image" href="Weather_Icon.png">
+		<link rel="apple-touch-icon" href="Weather_Icon.png">
+
+		<!-- SEO -->
+		<meta name="keywords" content="棒棒勝,天氣">
+		<meta name="author" content="棒棒勝">
+		<meta name="description" content="您的天氣好夥伴">
+
+		<!-- open graph data -->
+		<meta property="og:title" content="棒棒勝天氣" />
+		<meta property="og:type" content="website" />
+		<meta property="og:image" content="https://cdn.gnehs.com.tw/weather/Weather_Og.png" />
+		<meta property="og:description" content="您的天氣好夥伴" />
+		<meta property="article:author" content="https://www.facebook.com/gnehsouo/">
+
+		<!-- icon -->
+		<link rel="shortcut icon" href="Weather_Icon.png">
+
+		<!-- Script -->
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/tocas-ui/2.3.2/tocas.js"></script>
+
+		<!-- Style -->
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tocas-ui/2.3.2/tocas.css">
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/weather-icons/2.0.10/css/weather-icons.min.css">
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.css">
+		<style>
+			/* 
+			避免 Tocas UI 吃掉 Icon
+		*/
+
+			.wi:before {
+				font-family: weathericons !important;
+			}
+			/* 
+			天氣資訊滑入及點擊 
+		*/
+
+			#weatherfeedNorth>.event:hover,
+			#weatherfeedMidland>.event:hover,
+			#weatherfeedSouth>.event:hover,
+			#weatherfeedEast>.event:hover {
+				filter: hue-rotate(180deg);
+			}
+
+			#weatherfeedNorth>.event:active,
+			#weatherfeedMidland>.event:active,
+			#weatherfeedSouth>.event:active,
+			#weatherfeedEast>.event:active {
+				filter: hue-rotate(270deg);
+			}
+
+			#weatherfeedNorth>.event:hover,
+			#weatherfeedMidland>.event:hover,
+			#weatherfeedSouth>.event:hover,
+			#weatherfeedEast>.event:hover,
+			#weatherfeedNorth>.event:active,
+			#weatherfeedMidland>.event:active,
+			#weatherfeedSouth>.event:active,
+			#weatherfeedEast>.event:active {
+				cursor: pointer;
+				transition: all .1s cubic-bezier(0, 0.59, 0.99, 0.04);
+			}
+			/* 
+			卷軸樣式 
+		*/
+
+			::-webkit-scrollbar-track {
+				background-color: #F5F5F5;
+			}
+
+			::-webkit-scrollbar {
+				width: 5px;
+				height: 5px;
+				background-color: #F5F5F5;
+			}
+
+			::-webkit-scrollbar-thumb {
+				box-shadow: inset 0 0 6px rgba(0, 0, 0, .3);
+				background-color: #555;
+			}
+			/*
+			背景
+		*/
+
+			body,
+			#bgcover-blur {
+				background-attachment: fixed;
+				background-repeat: no-repeat;
+				background-position: top;
+			}
+
+			#bgcover {
+				min-height: 100vh;
+				padding-left: 20px;
+				padding-right: 20px;
+				background-color: rgba(255, 255, 255, 0.87);
+				box-shadow: 0 0 8px 0px rgba(0, 0, 0, 0.64);
+			}
+
+			#bgcover-blur {
+				height: 100%;
+				width: 100%;
+				top: 0;
+				right: 0;
+				bottom: 0;
+				left: 0;
+				position: absolute;
+				filter: blur(4px);
+			}
+
+			#bgcover-blur:before {
+				content: "";
+				position: absolute;
+				height: 100%;
+				width: 100%;
+				background-color: rgba(255, 255, 255, .7);
+			}
+			/* 當 ts.grid 變成兩列時，隱藏背景*/
+
+			@media (max-width: 991px) {
+				#bgcover-blur,
+				#bgcover-blur:before {
+					display: none;
+				}
+				body {
+					background-image: none !important;
+				}
+				#bgcover {
+					box-shadow: 0 0 0px 0px #000;
+				}
+			}
+			/* 隱藏 */
+
+			.hide {
+				display: none !important;
+			}
+		</style>
+	</head>
+
+	<body>
+		<div class="ts snackbar">
+			<div class="content"></div>
+			<a class="action"></a>
+		</div>
+		<div class="ts narrow container" id="bgcover">
+			<div id="bgcover-blur"></div>
+			<br>
+			<div class="ts stackable grid" id="HeaderWeather">
+				<div class="sixteen wide column">
+					<h2 class="ts center aligned header">
+						<span id="CityName">請允許我們存取您的位置</span>
+						<div class="sub header" id="Sun">
+							這將可以獲得您當前位置的天氣
+						</div>
+					</h2>
+				</div>
+				<div class="doubling four column row hide" id="daysWeather">
+					<div class="column">
+						<h4 class="ts dividing center aligned header">今天</h4>
+						<h4 class="ts center aligned header" id="Today"></h4>
+					</div>
+					<div class="column">
+						<h4 class="ts dividing center aligned header">明天</h4>
+						<h4 class="ts center aligned header" id="Day1"></h4>
+					</div>
+					<div class="column">
+						<h4 class="ts dividing center aligned header">後天</h4>
+						<h4 class="ts center aligned header" id="Day2"></h4>
+					</div>
+					<div class="column">
+						<h4 class="ts dividing center aligned header">大後天</h4>
+						<h4 class="ts center aligned header" id="Day3"></h4>
+					</div>
+				</div>
+				<div class="ts inverted active dimmer" id="headerload">
+					<div class="ts loader"></div>
+				</div>
+			</div>
+
+			<div class="ts section hidden divider"></div>
+
+
+			<div class="ts grid">
+				<div class="doubling four column row">
+					<div class="column">
+						<div id="weatherfeedNorth" class="ts large feed">
+							<h4 class="ts dividing header">北部</h4>
+						</div>
+					</div>
+					<div class="column">
+						<div id="weatherfeedMidland" class="ts large feed">
+							<h4 class="ts dividing header">中部</h4>
+						</div>
+					</div>
+					<div class="column">
+						<div id="weatherfeedSouth" class="ts large feed">
+							<h4 class="ts dividing header">南部</h4>
+						</div>
+					</div>
+					<div class="column">
+						<div id="weatherfeedEast" class="ts large feed">
+							<h4 class="ts dividing header">東部和離島</h4>
+						</div>
+					</div>
+				</div>
+			</div>
+			<br>
+		</div>
+		<nav class="ts inverted link menu stackable bottom attached fluid" style="box-shadow: 0px 0px 0px 0 #000;">
+			<div class="ts narrow container">
+
+				<a class="active item"><i class="cloud icon"></i>棒棒勝天氣</a>
+				<a href="https://cdn.gnehs.com.tw/" class="item"><i class="home icon"></i>棒棒勝OuO</a>
+				<a onclick="navigator.geolocation.getCurrentPosition(showPosition, showError);" class="item" id="gpsSearch"><i class="marker icon"></i>查詢我的位置</a>
+				<a href="debug.html" class="item"><i class="bug icon"></i>除錯</a>
+				<a href="index_old.05.28.html" class="item"><i class="history icon"></i>舊版</a>
+				<div class="right menu">
+					<a class="item"><i class="copyright icon"></i>棒棒勝 2017</a>
+				</div>
+			</div>
+		</nav>
+	</body>
+
+	<script>
+		(function (i, s, o, g, r, a, m) {
+			i['GoogleAnalyticsObject'] = r; i[r] = i[r] || function () {
+				(i[r].q = i[r].q || []).push(arguments)
+			}, i[r].l = 1 * new Date(); a = s.createElement(o),
+				m = s.getElementsByTagName(o)[0]; a.async = 1; a.src = g; m.parentNode.insertBefore(a, m)
+		})(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga');
+		ga('create', 'UA-46944346-10', 'auto');
+		ga('send', 'pageview');
+	</script>
+	<script>
+		//天氣總覽點擊查詢
+		$(function () {
+			$(".event").click(function () {
+				console.log("=======" + $(this).attr("data-where") + "=======");
+				console.log("用戶點擊: " + $(this).attr("data-where"));
+				var customCity = $(this).attr("data-where");
+				var jsonCity = "https://query.yahooapis.com/v1/public/yql?q=select * from weather.forecast where woeid in (select woeid from geo.places(1) where text='" + customCity + "') %20and%20u%3D%22c%22&format=json&callback=headercity";
+				$.getScript(jsonCity); //動態載入 JS 然後觸發 citySearch
+				console.log("讀取天氣: " + $(this).attr("data-where") + " 成功!");
+				$("#CityName").html(customCity);
+				$("#headerload").addClass("active");
+				$('html, body').animate({
+					scrollTop: $("body").offset().top
+				}, 700);
+			})
+		});
+		//GPS獲取用戶位置並載入天氣
+		navigator.geolocation.getCurrentPosition(showPosition, showError);
+
+		function showPosition(position) {
+			var where = position.coords.latitude + "," + position.coords.longitude
+			console.log("用戶位置: " + where);
+			console.log("讀取天氣: 用戶位置 成功!");
+			var jsonCity = "https://query.yahooapis.com/v1/public/yql?q=select * from weather.forecast where woeid in (SELECT woeid FROM geo.places WHERE text='(" + where + ")')and%20u%3D%22c%22&format=json&env=store%3A%2F%2Fdatatables.org%2Falltableswithkeys&callback=headercity";
+			var jsonheadercitygpsSearch = "https://query.yahooapis.com/v1/public/yql?q=select * from weather.forecast where woeid in (SELECT woeid FROM geo.places WHERE text='(" + where + ")')and%20u%3D%22c%22&format=json&env=store%3A%2F%2Fdatatables.org%2Falltableswithkeys&callback=gpsSearch";
+			$.getScript(jsonCity); //動態載入 JS 
+			$.getScript(jsonheadercitygpsSearch); //動態載入 JS 
+			$("#headerload").addClass("active");
+			$('html, body').animate({
+				scrollTop: $("body").offset().top
+			}, 700);
+		}
+		//GPS獲取用戶位置的錯誤資訊
+		function showError(error) {
+			switch (error.code) {
+				case error.PERMISSION_DENIED:
+					var errorCause = "您禁止了查詢位置功能，或是您並非使用 HTTPS 連線";
+					break;
+
+				case error.POSITION_UNAVAILABLE:
+					var errorCause = "無法獲取可用的位置訊息";
+					break;
+
+				case error.TIMEOUT:
+					var errorCause = "請求超時";
+					break;
+
+				case error.UNKNOWN_ERROR:
+					var errorCause = "一個未知的錯誤發生了";
+					break;
+			}
+			$("#HeaderWeather").addClass("hide"); //隱藏
+			var showerrorowo = "GPS獲取失敗: " + errorCause;
+			console.log(showerrorowo);
+			ts('.snackbar').snackbar({
+				content: showerrorowo,
+				actionEmphasis: 'warning',
+				hoverStay: 'true'
+			});
+		}
+		//當作測試的Feed
+		var weatherfeed = function (json) {
+			if (json.query.results === null) { errormsg(); }
+			var code = weather_con[json.query.results.channel.item.condition.code.toString()];
+			var icon = weather_icon[json.query.results.channel.item.condition.code.toString()] + " wi icon primary";
+			var temp = json.query.results.channel.item.forecast[0].low + "℃ ~ " + json.query.results.channel.item.forecast[0].high + "℃";
+			var city_name_owo = json.query.results.channel.location.city;
+			var sunrise = json.query.results.channel.astronomy.sunrise;
+			var sunset = json.query.results.channel.astronomy.sunset;
+			var forecastDay1temp = json.query.results.channel.item.forecast[1].low + "℃ ~ " + json.query.results.channel.item.forecast[1].high + "℃";
+			var forecastDay1code = weather_con[json.query.results.channel.item.forecast[1].code.toString()];
+			var forecastDay1icon = weather_icon[json.query.results.channel.item.forecast[1].code.toString()];
+			var forecastDay2temp = json.query.results.channel.item.forecast[2].low + "℃ ~ " + json.query.results.channel.item.forecast[2].high + "℃";
+			var forecastDay2code = weather_con[json.query.results.channel.item.forecast[2].code.toString()];
+			var forecastDay2icon = weather_icon[json.query.results.channel.item.forecast[2].code.toString()];
+			var forecastDay3temp = json.query.results.channel.item.forecast[3].low + "℃ ~ " + json.query.results.channel.item.forecast[3].high + "℃";
+			var forecastDay3code = weather_con[json.query.results.channel.item.forecast[3].code.toString()];
+			var forecastDay3icon = weather_icon[json.query.results.channel.item.forecast[3].code.toString()];
+			var where = city_name[city_name_owo][0];
+			var city_name_owo = city_name[city_name_owo][1];
+			$(where)
+				.append($("<a/>")
+					.append($("<div/>")
+						.addClass("label")
+						.append($("<i/>")
+							.addClass(icon)
+						)
+					)
+					.addClass("event")
+					.attr("data-where", city_name_owo)
+					.append($("<div/>")
+						.addClass("content")
+						.append($("<div/>")
+							.addClass("summary")
+							.html(city_name_owo + "</br>" + temp + "</br>" + code)
+						)
+					)
+				);
+
+			console.log("讀取天氣: " + city_name_owo + " 成功!");
+		};
+		//查詢城市
+		var headercity = function (json) {
+			if (json.query.results === null) { errormsg(); }
+			var code = weather_con[json.query.results.channel.item.condition.code.toString()];
+			var icon = weather_icon[json.query.results.channel.item.condition.code.toString()];
+			var temp = json.query.results.channel.item.forecast[0].low + "℃ ~ " + json.query.results.channel.item.forecast[0].high + "℃";
+			var sunrise = json.query.results.channel.astronomy.sunrise;
+			var sunset = json.query.results.channel.astronomy.sunset;
+			var sun = "<div class=\"sub header\" data-tooltip=\"日出 / 日落\"><i class='wi wi-sunrise'></i>" + sunrise + " / " + "<i class='wi wi-sunset'></i>" + sunset + "</div>";
+			var city_name_owo = json.query.results.channel.location.city;
+			var forecastDay1temp = json.query.results.channel.item.forecast[1].low + "℃ ~ " + json.query.results.channel.item.forecast[1].high + "℃";
+			var forecastDay1code = weather_con[json.query.results.channel.item.forecast[1].code.toString()];
+			var forecastDay1icon = weather_icon[json.query.results.channel.item.forecast[1].code.toString()];
+			var forecastDay2temp = json.query.results.channel.item.forecast[2].low + "℃ ~ " + json.query.results.channel.item.forecast[2].high + "℃";
+			var forecastDay2code = weather_con[json.query.results.channel.item.forecast[2].code.toString()];
+			var forecastDay2icon = weather_icon[json.query.results.channel.item.forecast[2].code.toString()];
+			var forecastDay3temp = json.query.results.channel.item.forecast[3].low + "℃ ~ " + json.query.results.channel.item.forecast[3].high + "℃";
+			var forecastDay3code = weather_con[json.query.results.channel.item.forecast[3].code.toString()];
+			var forecastDay3icon = weather_icon[json.query.results.channel.item.forecast[3].code.toString()];
+			//修改HTML
+			$("#Sun").html(sun);
+			$("#Today").html("<i class='wi " + icon + "'></i> " + temp + "<div class=\"sub header\">" + code + "</div>");
+			$("#Day1").html("<i class='wi " + forecastDay1icon + "'></i> " + forecastDay1temp + "<div class=\"sub header\">" + forecastDay1code + "</div>");
+			$("#Day2").html("<i class='wi " + forecastDay2icon + "'></i> " + forecastDay2temp + "<div class=\"sub header\">" + forecastDay2code + "</div>");
+			$("#Day3").html("<i class='wi " + forecastDay3icon + "'></i> " + forecastDay3temp + "<div class=\"sub header\">" + forecastDay3code + "</div>");
+			$("#daysWeather").removeClass("hide"); //移除預先載入的Class
+			$("#headerload").removeClass("active");
+
+		};
+		//查詢城市(GPS)
+		var gpsSearch = function (json) {
+			var city_name_owo = json.query.results.channel.location.city;
+			$("#gpsSearch").html("<i class='marker icon'></i>" + "查詢目前位置 // " + city_name_owo); //顯示用戶位置
+			$("#CityName").html("<i class='marker icon'></i>" + city_name_owo);//修改名稱為用戶位置
+		};
+		//錯誤訊息
+		function errormsg() {
+			console.log("讀取天氣: 失敗!");
+			swal("讀取失敗!", "可能是城市不存在，或是其他問題", "error");
+		}
+		//定義天氣型態和 ICON
+		weather_con = {
+			"0": "龍捲風",
+			"1": "颱風",
+			"2": "颶風",
+			"3": "強雷陣雨",
+			"4": "雷陣雨",
+			"5": "混合雨雪",
+			"6": "混合雨雪",
+			"7": "混合雨雪",
+			"8": "冰凍小雨",
+			"9": "小雨",
+			"10": "凍雨",
+			"11": "陣雨",
+			"12": "陣雨",
+			"13": "飄雪",
+			"14": "陣雪",
+			"15": "吹雪",
+			"16": "下雪",
+			"17": "冰雹",
+			"18": "雨雪",
+			"19": "多塵",
+			"20": "多霧",
+			"21": "陰霾",
+			"22": "多煙",
+			"23": "呼呼狂風",
+			"24": "有風",
+			"25": "冷",
+			"26": "多雲",
+			"27": "多雲時晴",
+			"28": "多雲時晴",
+			"29": "多雲時晴",
+			"30": "多雲時晴",
+			"31": "晴朗",
+			"32": "晴朗",
+			"33": "晴朗",
+			"34": "晴朗",
+			"35": "雨和冰雹",
+			"36": "炎熱",
+			"37": "雷陣雨",
+			"38": "零星雷陣雨",
+			"39": "零星雷陣雨",
+			"40": "零星雷陣雨",
+			"41": "大雪",
+			"42": "零星陣雪",
+			"43": "大雪",
+			"44": "多雲",
+			"45": "雷陣雨",
+			"46": "陣雪",
+			"47": "雷陣雨",
+			"3200": "資料錯誤"
+		};
+		weather_icon = {
+			"1": "wi-hurricane",
+			"2": "wi-tornado",
+			"3": "wi-storm-showers",
+			"4": "wi-storm-showers",
+			"5": "wi-snow",
+			"6": "wi-snow",
+			"7": "wi-snow",
+			"8": "wi-rain-mix",
+			"9": "wi-rain-mix",
+			"10": "wi-rain",
+			"11": "wi-rain",
+			"12": "wi-rain",
+			"13": "wi-snow",
+			"14": "wi-snow",
+			"15": "wi-sandstorm",
+			"16": "wi-snow",
+			"17": "wi-meteor",
+			"18": "wi-snow",
+			"19": "wi-smog",
+			"20": "wi-smog",
+			"21": "wi-smog",
+			"22": "wi-smog",
+			"23": "wi-strong-wind",
+			"24": "wi-windy",
+			"25": "wi-snowflake-cold",
+			"26": "wi-cloudy",
+			"27": "wi-night-alt-cloudy",
+			"28": "wi-day-cloudy",
+			"29": "wi-night-alt-cloudy",
+			"30": "wi-day-cloudy",
+			"31": "wi-night-clear",
+			"32": "wi-day-sunny",
+			"33": "wi-night-clear",
+			"34": "wi-day-sunny",
+			"35": "wi-meteor",
+			"36": "wi-hot",
+			"37": "wi-sandstorm",
+			"38": "wi-storm-showers",
+			"39": "wi-storm-showers",
+			"40": "wi-storm-showers",
+			"41": "wi-snow",
+			"42": "wi-snow",
+			"43": "wi-snow",
+			"44": "wi-snow",
+			"45": "wi-storm-showers",
+			"46": "wi-snow",
+			"47": "wi-storm-showers"
+		};
+		//縣市名稱的轉換及縣市分區
+		city_name = {
+			'New Taipei City': ['#weatherfeedNorth', '新北市'],
+			'Taipei City': ['#weatherfeedNorth', '臺北市'],
+			'Keelung City': ['#weatherfeedNorth', '基隆市'],
+			'Hsinchu County': ['#weatherfeedNorth', '新竹縣'],
+			'Hsinchu City': ['#weatherfeedNorth', '新竹市'],
+			'Taoyuan City': ['#weatherfeedNorth', '桃園市'],
+			'Miaoli County': ['#weatherfeedMidland', '苗栗縣'],
+			'Taichung City': ['#weatherfeedMidland', '臺中市'],
+			'Changhua County': ['#weatherfeedMidland', '彰化縣'],
+			'Nantou County': ['#weatherfeedMidland', '南投縣'],
+			'Yunlin County': ['#weatherfeedMidland', '雲林縣'],
+			'Chiayi County': ['#weatherfeedSouth', '嘉義縣'],
+			'Chiayi City': ['#weatherfeedSouth', '嘉義市'],
+			'Tainan City': ['#weatherfeedSouth', '臺南市'],
+			'Kaohsiung City': ['#weatherfeedSouth', '高雄市'],
+			'Pingtung County': ['#weatherfeedSouth', '屏東縣'],
+			'Yilan County': ['#weatherfeedEast', '宜蘭縣'],
+			'Hualien County': ['#weatherfeedEast', '花蓮縣'],
+			'Penghu County': ['#weatherfeedEast', '澎湖縣'],
+			'Kinmen County': ['#weatherfeedEast', '金門縣'],
+			'Fuzhou': ['#weatherfeedEast', '連江縣'],
+			'Taitung County': ['#weatherfeedEast', '臺東縣']
+		}
+		//city_name["Keelung City"][1]
+		//輸出 基隆市
+
+		// 數字改成底下圖片的數量
+		var imgnumber = Math.floor(Math.random() * 19);
+
+		// *圖片後方加"," 但是最後一個不需要
+		// 這些圖片是 CC0 網站拿來的 OuO
+		var imgurl = [
+			'//i.imgur.com/8PAkaT5.jpg',
+			'//i.imgur.com/97za76I.jpg',
+			'//i.imgur.com/G9kdJTn.jpg',
+			'//i.imgur.com/oyoQlIO.jpg',
+			'//i.imgur.com/TuZRBRR.jpg',
+			'//i.imgur.com/IIai94v.jpg',
+			'//i.imgur.com/pfaWNb9.jpg',
+			'//i.imgur.com/4qtsOf2.jpg',
+			'//i.imgur.com/Gg0HJa8.jpg',
+			'//i.imgur.com/73fVUB6.jpg',
+			'//i.imgur.com/y6GIgER.jpg',
+			'//i.imgur.com/CcG3J95.jpg',
+			'//i.imgur.com/Z7PSFXE.jpg',
+			'//i.imgur.com/d4bjGeB.jpg',
+			'//i.imgur.com/AUTVt3g.jpg',
+			'//i.imgur.com/EyGeh8i.jpg',
+			'//i.imgur.com/ezmuTGY.jpg',
+			'//i.imgur.com/6B8Q89f.jpg',
+			'//i.imgur.com/mNdGZ17.jpg'
+		];
+
+		//輸出背景圖片
+		$("body").css("background-image", "url(" + imgurl[imgnumber] + ") ");
+		$("#bgcover-blur").css("background-image", "url(" + imgurl[imgnumber] + ")");
+	</script>
+	<!-- 載入 #Weatherfeed 北部 -->
+	<script src="https://query.yahooapis.com/v1/public/yql?q=select * from weather.forecast where woeid in (select woeid from geo.places(1) where text='新北市') %20and%20u%3D%22c%22&format=json&callback=weatherfeed"></script>
+	<script src="https://query.yahooapis.com/v1/public/yql?q=select * from weather.forecast where woeid in (select woeid from geo.places(1) where text='臺北市') %20and%20u%3D%22c%22&format=json&callback=weatherfeed"></script>
+	<script src="https://query.yahooapis.com/v1/public/yql?q=select * from weather.forecast where woeid in (select woeid from geo.places(1) where text='基隆市') %20and%20u%3D%22c%22&format=json&callback=weatherfeed"></script>
+	<script src="https://query.yahooapis.com/v1/public/yql?q=select * from weather.forecast where woeid in (select woeid from geo.places(1) where text='宜蘭縣') %20and%20u%3D%22c%22&format=json&callback=weatherfeed"></script>
+	<script src="https://query.yahooapis.com/v1/public/yql?q=select * from weather.forecast where woeid in (select woeid from geo.places(1) where text='桃園市') %20and%20u%3D%22c%22&format=json&callback=weatherfeed"></script>
+	<script src="https://query.yahooapis.com/v1/public/yql?q=select * from weather.forecast where woeid in (select woeid from geo.places(1) where text='新竹縣') %20and%20u%3D%22c%22&format=json&callback=weatherfeed"></script>
+	<script src="https://query.yahooapis.com/v1/public/yql?q=select * from weather.forecast where woeid in (select woeid from geo.places(1) where text='新竹市') %20and%20u%3D%22c%22&format=json&callback=weatherfeed"></script>
+	<!-- 載入 #Weatherfeed 中部 -->
+	<script src="https://query.yahooapis.com/v1/public/yql?q=select * from weather.forecast where woeid in (select woeid from geo.places(1) where text='苗栗縣') %20and%20u%3D%22c%22&format=json&callback=weatherfeed"></script>
+	<script src="https://query.yahooapis.com/v1/public/yql?q=select * from weather.forecast where woeid in (select woeid from geo.places(1) where text='臺中市') %20and%20u%3D%22c%22&format=json&callback=weatherfeed"></script>
+	<script src="https://query.yahooapis.com/v1/public/yql?q=select * from weather.forecast where woeid in (select woeid from geo.places(1) where text='彰化縣') %20and%20u%3D%22c%22&format=json&callback=weatherfeed"></script>
+	<script src="https://query.yahooapis.com/v1/public/yql?q=select * from weather.forecast where woeid in (select woeid from geo.places(1) where text='南投縣') %20and%20u%3D%22c%22&format=json&callback=weatherfeed"></script>
+	<script src="https://query.yahooapis.com/v1/public/yql?q=select * from weather.forecast where woeid in (select woeid from geo.places(1) where text='雲林縣') %20and%20u%3D%22c%22&format=json&callback=weatherfeed"></script>
+	<!-- 載入 #Weatherfeed 南部 -->
+	<script src="https://query.yahooapis.com/v1/public/yql?q=select * from weather.forecast where woeid in (select woeid from geo.places(1) where text='嘉義縣') %20and%20u%3D%22c%22&format=json&callback=weatherfeed"></script>
+	<script src="https://query.yahooapis.com/v1/public/yql?q=select * from weather.forecast where woeid in (select woeid from geo.places(1) where text='嘉義市') %20and%20u%3D%22c%22&format=json&callback=weatherfeed"></script>
+	<script src="https://query.yahooapis.com/v1/public/yql?q=select * from weather.forecast where woeid in (select woeid from geo.places(1) where text='臺南市') %20and%20u%3D%22c%22&format=json&callback=weatherfeed"></script>
+	<script src="https://query.yahooapis.com/v1/public/yql?q=select * from weather.forecast where woeid in (select woeid from geo.places(1) where text='高雄市') %20and%20u%3D%22c%22&format=json&callback=weatherfeed"></script>
+	<script src="https://query.yahooapis.com/v1/public/yql?q=select * from weather.forecast where woeid in (select woeid from geo.places(1) where text='屏東縣') %20and%20u%3D%22c%22&format=json&callback=weatherfeed"></script>
+	<!-- 載入 #Weatherfeed 東部和離島 -->
+	<script src="https://query.yahooapis.com/v1/public/yql?q=select * from weather.forecast where woeid in (select woeid from geo.places(1) where text='花蓮縣') %20and%20u%3D%22c%22&format=json&callback=weatherfeed"></script>
+	<script src="https://query.yahooapis.com/v1/public/yql?q=select * from weather.forecast where woeid in (select woeid from geo.places(1) where text='臺東縣') %20and%20u%3D%22c%22&format=json&callback=weatherfeed"></script>
+	<script src="https://query.yahooapis.com/v1/public/yql?q=select * from weather.forecast where woeid in (select woeid from geo.places(1) where text='澎湖縣') %20and%20u%3D%22c%22&format=json&callback=weatherfeed"></script>
+	<script src="https://query.yahooapis.com/v1/public/yql?q=select * from weather.forecast where woeid in (select woeid from geo.places(1) where text='金門縣') %20and%20u%3D%22c%22&format=json&callback=weatherfeed"></script>
+	<script src="https://query.yahooapis.com/v1/public/yql?q=select * from weather.forecast where woeid in (select woeid from geo.places(1) where text='連江縣') %20and%20u%3D%22c%22&format=json&callback=weatherfeed"></script>
+	<!-- 載入 console_log.js -->
+	<script src="//cdn.gnehs.com.tw/cdn/console_log.js" charset="big5"></script>
+
+</html>
