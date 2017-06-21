@@ -1,0 +1,121 @@
+doctype html
+html
+    head
+        title CSS 濾鏡實驗室
+        meta(name='viewport',content='width=device-width, initial-scale=1, shrink-to-fit=no')
+        meta(charset='utf-8')
+        // Tocas UI
+        link(rel='stylesheet', href='https://cdn.rawgit.com/TeaMeow/TocasUI/2.3.2/dist/tocas.css')
+        // Tocas JS
+        script(src='https://cdn.rawgit.com/TeaMeow/TocasUI/2.3.2/dist/tocas.js')
+        // JQ https://cdnjs.com/libraries/jquery/
+        script(src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js')
+        // Font
+        link(href='https://fonts.googleapis.com/css?family=Ubuntu+Mono', rel='stylesheet')
+        link(href='https://fonts.googleapis.com/css?family=Raleway', rel='stylesheet')
+        // SEO
+        meta(name='keywords', content='CSS,濾鏡')
+        meta(name='author', content='棒棒勝')
+        meta(name='description', content='就是個濾鏡產生器')
+        // open graph data
+        meta(property='og:title', content='CSS 濾鏡實驗室')
+        meta(property='og:type', content='website')
+        meta(property='og:image', content='og.jpg')
+        meta(property='og:description', content='就是個濾鏡產生器')
+        meta(property='article:author', content='https://www.facebook.com/gnehsouo/')
+        style.
+            #CodeForCSS,#CodeForHtml,#CodeForJade{font-family: 'Ubuntu Mono', monospace;word-break: break-all;}
+            *{font-family: 'Raleway',-apple-system, "Source Han Sans TC","Helvetica Neue", Helvetica, "Nimbus Sans L", Arial, "Liberation Sans", "PingFang SC", "Hiragino Sans GB", "Source Han Sans CN","Source Han Sans SC", "Microsoft YaHei", "Wenquanyi Micro Hei", "WenQuanYi Zen Hei", "ST Heiti", SimHei, "WenQuanYi Zen Hei Sharp", sans-serif;}
+            #upload{font-size: 30px;cursor: pointer;position: absolute;height:100%;width:100%;filter:opacity(0);}
+            #uploader{padding: 0em;position: relative;height: 150px;}
+            #uploader>.header{padding-top: 2em;padding-bottom: .5em;}
+    body
+        .ts.basic.link.fluid.top.attached.menu.horizontally.scrollable
+            .ts.container
+                a.item(href='index.html') 洨洨安 CSS
+                a.item(href='main-basic.html') 基本用法
+                a.item(href='main-icon-font.html') Icon Font
+                a.item(href='main-tocas-example.html') Tocas UI 範例
+                a.item(href='breeding.html') 配種實驗室
+                a.right.item(href='https://github.com/gnehs/Tocas-UI-Xiaoan/', target='_blank') GitHub
+        .ts.fluid.huge.slate
+            .header CSS 濾鏡實驗室
+            .description Powered by 洨洨安 CSS
+        br
+        br
+        .ts.narrow.container
+            h2.ts.header 預覽區
+                .sub.header 您可自行上傳圖片
+            #uploader.ts.basic.dashed.clickable.slate
+                i.upload.symbol.icon
+                span.header 上傳圖片
+                span.description 將圖片拖拉至此處進行上傳。
+                input#upload(type='file')
+            #perview.ts.center.aligned.segment
+                img.ts.centered.huge.image(src='og.jpg')
+
+            h2.ts.header 濾鏡
+                .sub.header 調整底下滑桿，來調整您的濾鏡
+            #breeding.ts.grid
+                .eight.wide.column
+                    h6.ts.header Grayscale
+                        .inline.sub.header 黑白
+                    .ts.slider
+                        .ts.basic.right.pointing.label.large.device.only 0%
+                        input#grayscale(type='range')
+                        .ts.basic.left.pointing.label.large.device.only 100%
+                    h6.ts.header Sepia
+                        .inline.sub.header 懷舊
+                    .ts.slider
+                        .ts.basic.right.pointing.label.large.device.only 0%
+                        input#sepia(type='range')
+                        .ts.basic.left.pointing.label.large.device.only 100%
+                    h6.ts.header Saturate
+                        .inline.sub.header 飽和
+                    .ts.slider
+                        .ts.basic.right.pointing.label.large.device.only 0%
+                        input#saturate(type='range')
+                        .ts.basic.left.pointing.label.large.device.only 100%
+                    h6.ts.header Contrast
+                        .inline.sub.header 對比
+                    .ts.slider
+                        .ts.basic.right.pointing.label.large.device.only 0%
+                        input#contrast(type='range')
+                        .ts.basic.left.pointing.label.large.device.only 200%
+                .eight.wide.column
+                    h6.ts.header Hue-rotate
+                        .inline.sub.header 色相旋轉
+                    .ts.slider
+                        .ts.basic.right.pointing.label.large.device.only 0deg
+                        input#huerotate(type='range')
+                        .ts.basic.left.pointing.label.large.device.only 360deg
+                    h6.ts.header Invert
+                        .inline.sub.header 負片
+                    .ts.slider
+                        .ts.basic.right.pointing.label.large.device.only 0%
+                        input#invert(type='range')
+                        .ts.basic.left.pointing.label.large.device.only 100%
+                    h6.ts.header Brightness
+                        .inline.sub.header 亮度
+                    .ts.slider
+                        .ts.basic.right.pointing.label.large.device.only 0%
+                        input#brightness(type='range')
+                        .ts.basic.left.pointing.label.large.device.only 100%
+                    h6.ts.header Blur
+                        .inline.sub.header 模糊
+                    .ts.slider
+                        .ts.basic.right.pointing.label.large.device.only 0px
+                        input#blur(type='range')
+                        .ts.basic.left.pointing.label.large.device.only 10px
+
+            h2.ts.header CSS
+                .sub.header 您的所調整的濾鏡 CSS
+            .ts.segments
+                .ts.primary.segment CSS
+                #CodeForCSS.ts.segment 調整滑桿來產生 CSS
+        // JS
+        script(src='filter.js')
+        // footer
+        br
+        br
+        .ts.fluid.slate 洨洨安 CSS 2017
