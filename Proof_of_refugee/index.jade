@@ -1,0 +1,74 @@
+doctype html
+html
+    head
+        title 洨安教友證 2.0
+        meta(charset='utf-8')
+        meta(name='viewport', content='width=device-width, initial-scale=1.0')
+        // Tocas UI
+        link(rel='stylesheet', href='https://cdn.rawgit.com/TeaMeow/TocasUI/2.3.2/dist/tocas.css')
+        // Tocas JS
+        script(src='https://cdn.rawgit.com/TeaMeow/TocasUI/2.3.2/dist/tocas.js')
+        // Font
+        link(href='https://fonts.googleapis.com/css?family=Raleway', rel='stylesheet')
+        // JQ https://cdnjs.com/libraries/jquery/
+        script(src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js')
+        // Js
+        script(src='index.js')
+        // Search Engine
+        meta(name='description', content='為美好的世界獻上洨安教，一個沒有歧視的歡樂天堂')
+        meta(name='image', content='og.png')
+        // Schema.org for Google
+        meta(itemprop='name', content='洨安教友證 2.0')
+        meta(itemprop='description', content='為美好的世界獻上洨安教，一個沒有歧視的歡樂天堂')
+        meta(itemprop='image', content='og.png')
+        // Twitter
+        meta(name='twitter:card', content='summary')
+        meta(name='twitter:title', content='洨安教友證 2.0')
+        meta(name='twitter:description', content='為美好的世界獻上洨安教，一個沒有歧視的歡樂天堂')
+        meta(name='twitter:site', content='@gnehs_owo')
+        meta(name='twitter:creator', content='@gnehs_owo')
+        meta(name='twitter:image:src', content='og.png')
+        // Open Graph Tags
+        meta(name='og:title', content='洨安教友證 2.0')
+        meta(name='og:description', content='為美好的世界獻上洨安教，一個沒有歧視的歡樂天堂')
+        meta(name='og:image', content='og.png')
+        meta(name='og:site_name', content='https://xiaoan.tocas-ui.com/')
+        meta(name='og:locale', content='zh_TW')
+        meta(name='og:type', content='website')
+    body(onload='draw();')
+        .ts.snackbar
+            .content
+            .action
+        .ts.basic.link.fluid.top.attached.menu.horizontally.scrollable
+            .ts.container
+                a.item(href='index.html') 洨安教友證 2.0
+                a.right.item(href='https://github.com/gnehs/Sealed/tree/master/Proof_of_refugee', target='_blank') GitHub
+        header.ts.heading.vertically.padded.fluid.slate
+            .ts.container
+                h1.ts.center.aligned.header 洨安教友證
+                    .sub.header 為美好的世界獻上洨安教，一個沒有歧視的歡樂天堂
+        br
+        .ts.container
+            canvas.ts.massive.centered.rounded.image(id='owo',width='2400',height='1430',style='border:1px solid #ffdada')
+            br
+        .ts.very.narrow.container
+            .ts.attached.segment
+                .ts.form
+                    .ts.dividing.header 教友資訊
+                    .required.field
+                        label 姓名
+                        .ts.underlined.fluid.input
+                            input#name(type="text",placeholder="姓名",value="Yami Odymel")
+                    .required.disabled.field
+                        label 教友編號
+                        .ts.underlined.fluid.input
+                            input#num(type="text",placeholder="教友編號")
+                    .required.field
+                        label 教區
+                        .ts.underlined.fluid.input
+                            input#area(type="text",placeholder="教區",value="鬼島台灣")
+            a#download.ts.fluid.bottom.attached.button(download='xiaoan.png',onclick='downloadimg()') 下載
+                //-a#download.ts.button 下載
+            br
+            br
+        .ts.fluid.slate 為美好的世界獻上洨安教，一個沒有歧視的歡樂天堂
