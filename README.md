@@ -23,4 +23,4 @@
 
 [CSS 濾鏡實驗室](https://gnehs.github.io/Sealed/filter/filter.html)
 
-[洨安教友證 2.0](https://gnehs.github.io/Sealed/Proof_of_refugee/index.html)
+[洨安教友證 2.0](https://gnehs.github.io/Sealed/xiaoan_jiao_you_zheng/index.html)

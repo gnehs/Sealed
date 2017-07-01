@@ -1,7 +1,7 @@
 ## 洨安教友證 2.0
 使用了很棒棒的 Canvas 來為各位教友服務，來一起產生教友證吧
 
-[開始製作教友證](https://gnehs.github.io/Sealed/Proof_of_refugee/index.html)
+[開始製作教友證](https://gnehs.github.io/Sealed/xiaoan_jiao_you_zheng/index.html)
 
 ## 這個專案使用了啥
 - Canvas
