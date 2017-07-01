@@ -11,6 +11,18 @@ function draw(owo) {
         // create pattern
         ctx.fillStyle = ctx.createPattern(img, 'no-repeat');
         ctx.fillRect(0, 0, 2400, 1430);
+        // 教友編號
+        if (!owo) {
+            var number = Math.floor(Math.random() * 9999999999999)
+            $("#num").attr('value', number)
+        } else {
+            var number = document.getElementById("num").value
+            $("#download").attr('download', "教友 " + document.getElementById("name").value + " 的教友證.png")
+        }
+        ctx.fillText(number, 1540, 1080);
+        ctx.font = '250px owo';
+        ctx.fillStyle = "#FFF";
+        ctx.fillText(number, 1800, 780);
         // 輸出文字
         var area = document.getElementById("area").value;
         var name = document.getElementById("name").value;
@@ -23,19 +35,6 @@ function draw(owo) {
         ctx.fillStyle = "#666";
         ctx.fillText(name, 1540, 840);
         ctx.fillText(area, 1540, 1320);
-        // 教友編號
-        if (!owo) {
-            var number = Math.floor(Math.random() * 9999999999999)
-            $("#num").attr('value', number)
-        } else {
-            var number = document.getElementById("num").value
-            $("#download").attr('download', "教友 " + document.getElementById("name").value + " 的教友證.png")
-        }
-        ctx.fillText(number, 1540, 1080);
-        ctx.font = '180px owo';
-        ctx.fillStyle = "#FFF";
-        ctx.fillText(number, 1450, 180);
-
         var DownloadHref = canvas.toDataURL();
         $('#download').attr('href', DownloadHref);
     }
@@ -44,6 +43,6 @@ $(document).ready(function () {
     $("input").on("input", function () { draw("為美好的世界獻上洨安教，一個沒有歧視的歡樂天堂") })
 });
 function downloadimg() {
-    ts('.snackbar').snackbar({ content: '親愛的 '+document.getElementById("name").value+'，教友證已經成功地下載了，感謝您今日的使用。', actionEmphasis: 'negative' })
+    ts('.snackbar').snackbar({ content: '親愛的 ' + document.getElementById("name").value + '，教友證已經成功地下載了，感謝您今日的使用。', actionEmphasis: 'negative' })
 }
 
