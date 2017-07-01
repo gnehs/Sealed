@@ -19,6 +19,8 @@ function draw(owo) {
             var number = document.getElementById("num").value
             $("#download").attr('download', "教友 " + document.getElementById("name").value + " 的教友證.png")
         }
+        ctx.font = '72px Raleway,Noto Sans CJK TC,PingFangTC-Regular,sans-serif';
+        ctx.fillStyle = "#666";
         ctx.fillText(number, 1540, 1080);
         ctx.font = '250px owo';
         ctx.fillStyle = "#FFF";
