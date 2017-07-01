@@ -1,13 +1,14 @@
 ﻿<!DOCTYPE HTML>
-<html data-ts-native>
+<html>
+
 	<head>
 		<title>我被CIA監控了嗎?</title>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 		<!-- Tocas UI：CSS 與元件 -->
-<link rel="stylesheet" href="//cdn.rawgit.com/TeaMeow/TocasUI/2.3.2/dist/tocas.css">
-<!-- Tocas JS：模塊與 JavaScript 函式 -->
-<script src="//cdn.rawgit.com/TeaMeow/TocasUI/2.3.2/dist/tocas.js"></script>
+		<link rel="stylesheet" href="//cdn.rawgit.com/TeaMeow/TocasUI/2.3.2/dist/tocas.css">
+		<!-- Tocas JS：模塊與 JavaScript 函式 -->
+		<script src="//cdn.rawgit.com/TeaMeow/TocasUI/2.3.2/dist/tocas.js"></script>
 		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.css">
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.js"></script>
 		<!-- SEO -->
@@ -20,16 +21,17 @@
 		<meta property="og:type" content="website" />
 		<meta property="og:url" content="https://gnehs.github.io/Sealed/CIA/" />
 		<meta property="og:image" content="http://i.imgur.com/xQuQUBg.png" />
-		<meta property="og:description" content="輕鬆的檢查您是否被 CIA 監控" /> 
+		<meta property="og:description" content="輕鬆的檢查您是否被 CIA 監控" />
 		<meta property="article:author" content="https://www.facebook.com/gnehsouo/">
 		<style>
-		.image > div {
-			display:		block;
-			position:		relative;
-			width:			100%;
-		}
+			.image>div {
+				display: block;
+				position: relative;
+				width: 100%;
+			}
 		</style>
 	</head>
+
 	<body>
 		<nav class="ts fluid pure large basic menu">
 			<div class="ts narrow container">
@@ -38,26 +40,22 @@
 			</div>
 		</nav>
 		<div class="ts large heading center aligned slate">
-				<span class="header">我被CIA監控了嗎?</span>
-				<span class="description">點擊下面按鈕來檢查</span>
-				<div class="action">
-					<button class="ts labeled icon primary button" onclick="CIA()">
+			<span class="header">我被CIA監控了嗎?</span>
+			<span class="description">點擊下面按鈕來檢查</span>
+			<div class="action">
+				<button class="ts labeled icon primary button" onclick="CIA()">
 						<i class="doctor icon"></i>
 						檢查
 					</button>
-				</div>
+			</div>
 		</div>
 		<div class="ts narrow container">
 			<br>
 			<div class="ts stackable three waterfall cards">
 				<div class="ts card">
 					<div class="image">
-						<div class="fb-page" 
-						data-href="https://www.facebook.com/gnehsouo/" 
-						data-small-header="false" 
-						data-adapt-container-width="true" 
-						data-hide-cover="false" 
-						data-show-facepile="true"></div>
+						<div class="fb-page" data-href="https://www.facebook.com/gnehsouo/" data-small-header="false" data-adapt-container-width="true"
+						 data-hide-cover="false" data-show-facepile="true"></div>
 					</div>
 				</div>
 				<div class="ts card">
@@ -85,7 +83,7 @@
 						<a class="ts button" href="http://t4t5.github.io/sweetalert/">sweetAlert</a>
 					</div>
 				</div>
-				
+
 				<div class="ts primary card">
 					<div class="content">
 						<div class="ts statistic center aligned" style="display: block;">
@@ -100,61 +98,53 @@
 				</div>
 			</div>
 		</div>
-		
-		
-	
+
+
+
 		<script>
-		
-		function CIA(){
-			swal({
-				title: "你確定嗎??",
-				text: "確定進行檢查?",
-				type: "warning",
-				showCancelButton: true,
-				confirmButtonText: "是的",
-				cancelButtonText: "鼻要",
-				closeOnConfirm: false
+			function CIA() {
+				swal({
+					title: "你確定嗎??",
+					text: "確定進行檢查?",
+					type: "warning",
+					showCancelButton: true,
+					confirmButtonText: "是的",
+					cancelButtonText: "鼻要",
+					closeOnConfirm: false
 				},
-				function(){
-					swal({
-						title: "檢查中",
-						text: "<div class=\"ts active inline loader\"></div>",
-						timer: 4000,
-						showConfirmButton: false,
-						html: true
-					},
-					function(){
-							setTimeout(function(){swal({title: "<i class=\"thumbs outline up icon\"></i>恭喜<i class=\"thumbs outline up icon\"></i>",text: "您正在被CIA監控!",type: "success",confirmButtonText: "好喔",html: true});});
-				})
-			});
-		}
-		</script>
-		<script>
-			(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-			(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-			m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-			})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
-			ga('create', 'UA-46944346-10', 'auto');
-			ga('send', 'pageview');
+					function () {
+						swal({
+							title: "檢查中",
+							text: "<div class=\"ts active inline loader\"></div>",
+							timer: 4000,
+							showConfirmButton: false,
+							html: true
+						},
+							function () {
+								setTimeout(function () { swal({ title: "<i class=\"thumbs outline up icon\"></i>恭喜<i class=\"thumbs outline up icon\"></i>", text: "您正在被CIA監控!", type: "success", confirmButtonText: "好喔", html: true }); });
+							})
+					});
+			}
 		</script>
 		<div id="fb-root"></div>
 		<script>
-			(function(d, s, id) {
-			var js, fjs = d.getElementsByTagName(s)[0];
-			if (d.getElementById(id)) return;
-			js = d.createElement(s); js.id = id;
-			js.src = "//connect.facebook.net/zh_HK/sdk.js#xfbml=1&version=v2.8&appId=675846769235510";
-			fjs.parentNode.insertBefore(js, fjs);
+			(function (d, s, id) {
+				var js, fjs = d.getElementsByTagName(s)[0];
+				if (d.getElementById(id)) return;
+				js = d.createElement(s); js.id = id;
+				js.src = "//connect.facebook.net/zh_HK/sdk.js#xfbml=1&version=v2.8&appId=675846769235510";
+				fjs.parentNode.insertBefore(js, fjs);
 			}(document, 'script', 'facebook-jssdk'));
 			console.log(" @@@@@@@@  @@     @  @@@@@@@  @@    @@   @@@@@@ ");
-console.log(" @@        @ @@   @  @@       @@    @@  @       ");
-console.log(" @@  @@@@  @  @@  @  @@@@@@@  @@@@@@@@   @@@@@  ");
-console.log(" @@    @@  @   @@ @  @@       @@    @@        @ ");
-console.log(" @@@@@@@@  @     @@  @@@@@@@  @@    @@  @@@@@@  ");
-console.log("================================================");
-console.log("%c", "padding:100px 225px;line-height:225px;background:url('http://i.imgur.com/SSudxMJ.png') no-repeat;");
-console.log("%c嘿，這裡不是給你亂玩的", "font-size: 2.4em;color: #000;background-color:#FFF;");
-console.log("%c在這裡貼上任何程式碼是拿不到古柯鹼的", "font-size: 1.7em;color: #000;background-color:#FFF;");
+			console.log(" @@        @ @@   @  @@       @@    @@  @       ");
+			console.log(" @@  @@@@  @  @@  @  @@@@@@@  @@@@@@@@   @@@@@  ");
+			console.log(" @@    @@  @   @@ @  @@       @@    @@        @ ");
+			console.log(" @@@@@@@@  @     @@  @@@@@@@  @@    @@  @@@@@@  ");
+			console.log("================================================");
+			console.log("%c", "padding:100px 225px;line-height:225px;background:url('http://i.imgur.com/SSudxMJ.png') no-repeat;");
+			console.log("%c嘿，這裡不是給你亂玩的", "font-size: 2.4em;color: #000;background-color:#FFF;");
+			console.log("%c在這裡貼上任何程式碼是拿不到古柯鹼的", "font-size: 1.7em;color: #000;background-color:#FFF;");
 		</script>
 	</body>
+
 </html>
