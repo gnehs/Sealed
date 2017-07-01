@@ -10,6 +10,12 @@ html
         script(src='https://cdn.rawgit.com/TeaMeow/TocasUI/2.3.2/dist/tocas.js')
         // Font
         link(href='https://fonts.googleapis.com/css?family=Raleway', rel='stylesheet')
+        style.
+            @font-face {
+                font-family: owo;
+                src: url(barcode.ttf);
+            }
+            owo{font-family: owo;}
         // JQ https://cdnjs.com/libraries/jquery/
         script(src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js')
         // Js
@@ -36,6 +42,7 @@ html
         meta(name='og:locale', content='zh_TW')
         meta(name='og:type', content='website')
     body(onload='draw();')
+        owo
         .ts.snackbar
             .content
             .action

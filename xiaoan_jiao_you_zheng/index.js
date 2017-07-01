@@ -32,6 +32,9 @@ function draw(owo) {
             $("#download").attr('download', "教友 " + document.getElementById("name").value + " 的教友證.png")
         }
         ctx.fillText(number, 1540, 1080);
+        ctx.font = '180px owo';
+        ctx.fillStyle = "#FFF";
+        ctx.fillText(number, 1450, 180);
 
         var DownloadHref = canvas.toDataURL();
         $('#download').attr('href', DownloadHref);
