@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <style>
+        body {
+            margin: 0
+        }
+        
+        #particles-js {
+            position: fixed;
+            z-index: -9487;
+            width: 100vw;
+            height: 100vh;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="particles-js"></div>
+    <script src="particles.min.js"></script>
+    <script>
+        particlesJS.load('particles-js', 'owo.json', function() {
+            console.log('callback - particles.js config loaded');
+        });
+    </script>
+
+
+</body>
+
+</html>
