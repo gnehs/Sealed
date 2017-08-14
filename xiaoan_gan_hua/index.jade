@@ -1,0 +1,46 @@
+doctype html
+html
+    head
+        title 洨洨安幹話產生器
+        meta(charset='utf-8')
+        meta(name='viewport', content='width=device-width, initial-scale=1.0')
+        // Tocas UI
+        link(rel='stylesheet', href='https://cdn.rawgit.com/TeaMeow/TocasUI/2.3.2/dist/tocas.css')
+        // Tocas JS
+        script(src='https://cdn.rawgit.com/TeaMeow/TocasUI/2.3.2/dist/tocas.js')
+        // JQ https://cdnjs.com/libraries/jquery/
+        script(src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js')
+        // Js
+        script(src='index.js')
+        include ./../../Jade/_tags.jade
+        +social_tags('洨洨安幹話產生器','沒有，這我沒說過','https://gnehs.github.io/Sealed/xiaoan_gan_hua/og.jpg','https://gnehs.github.io/Sealed/xiaoan_gan_hua/index.html')
+    body(onload='draw();')
+        owo
+        .ts.snackbar
+            .content
+            .action
+        .ts.basic.link.fluid.top.attached.menu.horizontally.scrollable
+            .ts.container
+                a.item(href='index.html') 洨洨安幹話產生器
+                a.right.item(href='https://github.com/gnehs/Sealed/tree/master/xiaoan_gan_hua', target='_blank') GitHub
+        header.ts.heading.vertically.padded.fluid.slate
+            .ts.container
+                h1.ts.center.aligned.header 洨洨安幹話產生器
+                    .sub.header 沒有，這我沒說過
+        br
+        .ts.container
+            canvas.ts.massive.centered.rounded.image(id='owo',width='1535',height='270',style='border:1px solid #ffdada;background-color:#26262f;')
+            br
+        .ts.very.narrow.container
+            .ts.attached.segment
+                .ts.form
+                    .ts.dividing.header 洨洨安幹話產生器
+                    .field
+                        label 幹話
+                        .ts.underlined.fluid.input
+                            input#text(type="text",placeholder="在此填入幹話",value="2016始春")
+                    .field
+                        label 底部操作
+                        .ts.underlined.fluid.input
+                            input#btn(type="text",placeholder="底部操作",value="讚好 · 回覆 · 87小時")
+            a#download.ts.fluid.bottom.attached.button(download='xiaoan.png',onclick='downloadimg()') 下載

@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>洨洨安幹話產生器</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Tocas UI-->
+    <link rel="stylesheet" href="https://cdn.rawgit.com/TeaMeow/TocasUI/2.3.2/dist/tocas.css">
+    <!-- Tocas JS-->
+    <script src="https://cdn.rawgit.com/TeaMeow/TocasUI/2.3.2/dist/tocas.js"></script>
+    <!-- JQ https://cdnjs.com/libraries/jquery/-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <!-- Js-->
+    <script src="index.js"></script>
+        <meta name="description" content="沒有，這我沒說過">
+        <meta name="image" content="https://gnehs.github.io/Sealed/xiaoan_gan_hua/og.jpg">
+        <meta itemprop="name" content="洨洨安幹話產生器">
+        <meta itemprop="description" content="沒有，這我沒說過">
+        <meta itemprop="image" content="https://gnehs.github.io/Sealed/xiaoan_gan_hua/og.jpg">
+        <meta name="twitter:card" content="summary">
+        <meta name="twitter:title" content="洨洨安幹話產生器">
+        <meta name="twitter:description" content="沒有，這我沒說過">
+        <meta name="twitter:image:src" content="https://gnehs.github.io/Sealed/xiaoan_gan_hua/og.jpg">
+        <meta name="og:title" content="洨洨安幹話產生器">
+        <meta name="og:description" content="沒有，這我沒說過">
+        <meta name="og:image" content="https://gnehs.github.io/Sealed/xiaoan_gan_hua/og.jpg">
+        <meta name="og:url" content="https://gnehs.github.io/Sealed/xiaoan_gan_hua/index.html">
+        <meta name="og:site_name" content="洨洨安幹話產生器">
+        <meta name="og:locale" content="zh_TW">
+        <meta name="og:type" content="website">
+  </head>
+  <body onload="draw();">
+    <owo></owo>
+    <div class="ts snackbar">
+      <div class="content"></div>
+      <div class="action"></div>
+    </div>
+    <div class="ts basic link fluid top attached menu horizontally scrollable">
+      <div class="ts container"><a class="item" href="index.html">洨洨安幹話產生器</a><a class="right item" href="https://github.com/gnehs/Sealed/tree/master/xiaoan_gan_hua" target="_blank">GitHub</a></div>
+    </div>
+    <header class="ts heading vertically padded fluid slate">
+      <div class="ts container">
+        <h1 class="ts center aligned header">洨洨安幹話產生器
+          <div class="sub header">沒有，這我沒說過</div>
+        </h1>
+      </div>
+    </header><br>
+    <div class="ts container">
+      <canvas class="ts massive centered rounded image" id="owo" width="1535" height="270" style="border:1px solid #ffdada;background-color:#26262f;"></canvas><br>
+    </div>
+    <div class="ts very narrow container">
+      <div class="ts attached segment">
+        <div class="ts form">
+          <div class="ts dividing header">洨洨安幹話產生器</div>
+          <div class="field">
+            <label>幹話</label>
+            <div class="ts underlined fluid input">
+              <input id="text" type="text" placeholder="在此填入幹話" value="2016始春">
+            </div>
+          </div>
+          <div class="field">
+            <label>底部操作</label>
+            <div class="ts underlined fluid input">
+              <input id="btn" type="text" placeholder="底部操作" value="讚好 · 回覆 · 87小時">
+            </div>
+          </div>
+        </div>
+      </div><a class="ts fluid bottom attached button" id="download" download="xiaoan.png" onclick="downloadimg()">下載</a>
+    </div>
+  </body>
+</html>

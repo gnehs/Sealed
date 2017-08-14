@@ -24,3 +24,7 @@
 [CSS 濾鏡實驗室](https://gnehs.github.io/Sealed/filter/filter.html)
 
 [洨安教友證 2.0](https://gnehs.github.io/Sealed/xiaoan_jiao_you_zheng/index.html)
+
+[洨安幹話產生器](https://gnehs.github.io/Sealed/xiaoan_gan_hua/index.html)
+
+[2016 始春](https://gnehs.github.io/Sealed/EarlySpring/index.html)
