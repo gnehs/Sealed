@@ -20,27 +20,8 @@ html
         script(src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js')
         // Js
         script(src='index.js')
-        // Search Engine
-        meta(name='description', content='為美好的世界獻上洨安教，一個沒有歧視的歡樂天堂')
-        meta(name='image', content='og.png')
-        // Schema.org for Google
-        meta(itemprop='name', content='洨安教友證 2.0')
-        meta(itemprop='description', content='為美好的世界獻上洨安教，一個沒有歧視的歡樂天堂')
-        meta(itemprop='image', content='og.png')
-        // Twitter
-        meta(name='twitter:card', content='summary')
-        meta(name='twitter:title', content='洨安教友證 2.0')
-        meta(name='twitter:description', content='為美好的世界獻上洨安教，一個沒有歧視的歡樂天堂')
-        meta(name='twitter:site', content='@gnehs_owo')
-        meta(name='twitter:creator', content='@gnehs_owo')
-        meta(name='twitter:image:src', content='og.png')
-        // Open Graph Tags
-        meta(name='og:title', content='洨安教友證 2.0')
-        meta(name='og:description', content='為美好的世界獻上洨安教，一個沒有歧視的歡樂天堂')
-        meta(name='og:image', content='og.png')
-        meta(name='og:site_name', content='https://xiaoan.tocas-ui.com/')
-        meta(name='og:locale', content='zh_TW')
-        meta(name='og:type', content='website')
+        include ./../../Jade/_tags.jade
+        +social_tags('洨安教友證 2.0','為美好的世界獻上洨安教，一個沒有歧視的歡樂天堂','https://gnehs.github.io/Sealed/xiaoan_jiao_you_zheng/og.png','https://gnehs.github.io/Sealed/xiaoan_jiao_you_zheng/index.html')
     body(onload='draw();')
         owo
         .ts.snackbar
@@ -59,7 +40,7 @@ html
             canvas.ts.massive.centered.rounded.image(id='owo',width='2400',height='1430',style='border:1px solid #ffdada')
             br
         .ts.very.narrow.container
-            .ts.attached.segment
+            .ts.top.attached.segment
                 .ts.form
                     .ts.dividing.header 教友資訊
                     .required.field
