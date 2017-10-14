@@ -28,3 +28,5 @@
 [洨安幹話產生器](https://gnehs.github.io/Sealed/xiaoan_gan_hua/index.html)
 
 [2016 始春](https://gnehs.github.io/Sealed/EarlySpring/index.html)
+
+[黏黏安](https://gnehs.github.io/Sealed/sticky_xiaoan/demo.html)
