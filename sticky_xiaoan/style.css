@@ -39,6 +39,11 @@
     .pace-done header.slate>.image>img {
         animation: fadeIn 3s ease;
     }
+    
+    #about {
+        margin-top: -80px;
+        margin-left: 30px
+    }
     /*===============================
                   Footer
     ===============================*/
