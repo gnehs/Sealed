@@ -1,0 +1,184 @@
+    body {
+        font-size: 18px;
+    }
+    /*===============================
+                Header
+    ===============================*/
+    
+    header {
+        box-shadow: 0 -5px 14px 12px rgba(0, 0, 0, 0.2);
+        height: 100vh;
+        padding-top: 25vh !important;
+        background: #000;
+    }
+    
+    header.slate>.image {
+        background: #000;
+    }
+    
+    header.slate>.image>img {
+        filter: blur(2px) brightness(40%);
+        transform: scale(1.2);
+        background-color: rgba(0, 0, 0, .4);
+    }
+    
+    header .header:not(.sub) {
+        font-size: 2em !important;
+    }
+    
+    header .description {
+        font-size: 1.35em !important;
+        line-height: 1.2em !important;
+    }
+    /* animation */
+    
+    .pace-running header.slate>.image>img {
+        opacity: 0;
+    }
+    
+    .pace-done header.slate>.image>img {
+        animation: fadeIn 3s ease;
+    }
+    /*===============================
+                  Footer
+    ===============================*/
+    
+    footer {
+        margin-top: 55px;
+    }
+    /*===============================
+                Animation
+    ===============================*/
+    
+    .flip {
+        animation: flip 1.25s linear !important;
+    }
+    
+    @keyframes flip {
+        from {
+            transform: rotateY(0deg);
+        }
+        to {
+            transform: rotateY(360deg);
+        }
+    }
+    
+    .fadeIn {
+        animation: fadeIn 3.25s linear !important;
+    }
+    
+    @keyframes fadeIn {
+        from {
+            opacity: 0;
+        }
+        to {
+            opacity: 1;
+        }
+    }
+    
+    .blurIn {
+        animation: blurIn 3.25s linear !important;
+    }
+    
+    @keyframes blurIn {
+        from {
+            filter: blur(4px);
+        }
+        to {
+            filter: blur(0px);
+        }
+    }
+    
+    .blurOut {
+        animation: blurOut 3.25s linear !important;
+    }
+    
+    @keyframes blurOut {
+        from {
+            filter: blur(0px);
+        }
+        to {
+            filter: blur(4px);
+        }
+    }
+    
+    .headerChange {
+        animation: headerChange 2s linear !important;
+    }
+    
+    @keyframes headerChange {
+        0% {
+            filter: blur(0px);
+            opacity: 1;
+        }
+        50% {
+            filter: blur(4px);
+            opacity: 0;
+        }
+        100% {
+            filter: blur(0px);
+            opacity: 1;
+        }
+    }
+    
+    .shake {
+        animation: shake .01s linear infinite !important;
+    }
+    
+    @keyframes shake {
+        0%,
+        100% {
+            transform: translate(0, 0) rotate(0);
+            opacity: 1;
+        }
+        25% {
+            transform: translate(-2.5px, -2.5px) rotate(-1.52deg);
+            opacity: 0.95;
+        }
+        40% {
+            transform: translate(-2.5px, 2.5px) rotate(2.5deg);
+            opacity: 1;
+        }
+        50% {
+            transform: translate(2.5px, 2.5px) rotate(-1.75deg);
+            opacity: 0.95;
+        }
+        60% {
+            transform: translate(0px, 0px) rotate(5deg);
+            opacity: 1;
+        }
+        75% {
+            transform: translate(2.5px, -2.5px) rotate(2.5deg);
+            opacity: 0.7;
+        }
+    }
+    /*===============================
+                Scroll Bar
+    ===============================*/
+    
+     ::-webkit-scrollbar-track {
+        background-color: #DADADA;
+    }
+    
+     ::-webkit-scrollbar-track:active {
+        background-color: #BEBEBE;
+    }
+    
+     ::-webkit-scrollbar {
+        width: 8px;
+        height: 5px;
+    }
+    
+     ::-webkit-scrollbar-thumb {
+        box-shadow: inset 0 0 6px rgba(0, 0, 0, .3);
+        background-color: #585858;
+        border-radius: 3px
+    }
+    
+     ::-webkit-scrollbar-thumb:hover {
+        background-color: #3F3F3F;
+    }
+    
+     ::-webkit-scrollbar-thumb:active {
+        background-color: #292727;
+    }
