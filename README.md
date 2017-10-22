@@ -30,3 +30,5 @@
 [2016 始春](https://gnehs.github.io/Sealed/EarlySpring/index.html)
 
 [黏黏安](https://gnehs.github.io/Sealed/sticky_xiaoan/demo.html)
+
+[洨洨安ｘ洨恐龍](https://gnehs.github.io/Sealed/t-rex-runner/index.html)
