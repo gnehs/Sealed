@@ -32,3 +32,5 @@
 [黏黏安](https://gnehs.github.io/Sealed/sticky_xiaoan/demo.html)
 
 [洨洨安ｘ洨恐龍](https://gnehs.github.io/Sealed/t-rex-runner/index.html)
+
+[Facebook Loader](https://gnehs.github.io/Sealed/facebook_loader/index.html)
