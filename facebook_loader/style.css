@@ -1,0 +1,93 @@
+body {
+    background-color: #dbdcdb;
+    margin-left: calc(50vw - 250px);
+    margin-top: calc(50vh - 250px);
+}
+
+.loader {
+    width: 500px;
+    height: 500px;
+    animation: loading 1s infinite linear;
+}
+
+.a,
+.b,
+.load {
+    position: absolute;
+}
+
+.a,
+.b {
+    position: absolute;
+    width: 250px;
+    height: 10px;
+    border-radius: 10%;
+    background-image: -webkit-gradient(linear, 0% 0%, 100% 0%, color-stop(0.5, rgba(255, 255, 255, 0.82)), color-stop(0.5, rgba(255, 255, 255, 0.2)));
+}
+
+.load {
+    width: 50px;
+    height: 50px;
+    top: calc(50% - 25px);
+    left: calc(50% - 25px);
+    text-indent: -9999em;
+    border-radius: 50%;
+    background: #ffffff;
+    background: linear-gradient(to right, #ffffffc1 10%, rgba(255, 255, 255, 0) 42%);
+    animation: loading 1.2s infinite linear;
+}
+
+.load:before {
+    width: 50%;
+    height: 50%;
+    background: #ffffff;
+    border-radius: 100% 0 0 0;
+    position: absolute;
+    top: 0;
+    left: 0;
+    content: '';
+}
+
+.load:after {
+    background: #dbdcdb;
+    width: 72%;
+    height: 72%;
+    border-radius: 50%;
+    content: '';
+    margin: auto;
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+}
+
+.loader:active .load:after {
+    content: '';
+    background: url(https://xiaoan.tocas-ui.com/svg/xiaoan.svg);
+    background-size: 40px;
+    background-position: center;
+}
+
+.a {
+    top: calc(50% - 5px);
+    left: 25%;
+}
+
+.b {
+    bottom: calc(50% - 5px);
+    right: 25%;
+}
+
+.b {
+    transform: rotate(90deg);
+}
+
+@keyframes loading {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
