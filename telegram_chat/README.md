@@ -1,7 +1,7 @@
-## 洨安幹話產生器
-使用了很棒棒的 Canvas 來產生幹話
+## Telegram 對話產生器
+使用了很棒棒的 Canvas 來產生對話
 
-[開始講幹話](https://gnehs.github.io/Sealed/xiaoan_gan_hua/index.html)
+[試用看看](https://gnehs.github.io/Sealed/telegram_chat/index.html)
 
 ## 這個專案使用了啥
 - Canvas
