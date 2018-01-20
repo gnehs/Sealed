@@ -1,0 +1,61 @@
+doctype html
+html
+    head
+        title Telegram 對話產生器
+        meta(charset='utf-8')
+        meta(name='viewport', content='width=device-width, initial-scale=1.0')
+        // Tocas UI
+        link(rel='stylesheet', href='https://cdn.rawgit.com/TeaMeow/TocasUI/2.3.3/dist/tocas.css')
+        // Tocas JS
+        script(src='https://cdn.rawgit.com/TeaMeow/TocasUI/2.3.2/dist/tocas.js')
+        // JQ https://cdnjs.com/libraries/jquery/
+        script(src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js')
+        // Js
+        script(src='index.js')
+        include ./../../Jade/_tags.jade
+        +social_tags('Telegram 對話產生器','沒有，這我沒說過','https://gnehs.github.io/Sealed/telegram_chat/og.png','https://gnehs.github.io/Sealed/telegram_chat/index.html')
+        style.
+            #owo{
+                background-color: #fff;
+                background-image: -webkit-linear-gradient(45deg,#efefef 25%,transparent 25%,transparent 75%,#efefef 75%,#efefef),-webkit-linear-gradient(45deg,#efefef 25%,transparent 25%,transparent 75%,#efefef 75%,#efefef);
+                background-position: 0 0,10px 10px;
+                background-size: 21px 21px;
+            }
+    body(onload='draw();')
+        owo
+        .ts.snackbar
+            .content
+            .action
+        .ts.basic.link.fluid.top.attached.menu.horizontally.scrollable
+            .ts.container
+                a.item(href='index.html') Telegram 對話產生器
+                a.right.item(href='https://github.com/gnehs/Sealed/tree/master/telegram_chat', target='_blank') GitHub
+        header.ts.heading.vertically.padded.fluid.slate
+            .ts.container
+                h1.ts.center.aligned.header Telegram 對話產生器
+                    .sub.header 沒有，這我沒說過
+        br
+        .ts.container
+            canvas.ts.centered.rounded.image(id='owo',width='512',height='92',style='border:1px solid #ffdada;')
+            br
+        .ts.very.narrow.container
+            .ts.top.attached.segment
+                .ts.form
+                    .ts.dividing.header Telegram 對話產生器
+                    .field
+                        label 名稱
+                        .ts.underlined.fluid.input
+                            input#name(type="text",placeholder="在此填入幹話",value="Yami Odymel http://yami.io/")
+                    .field
+                        label 訊息
+                        .ts.underlined.fluid.input
+                            input#msg(type="text",placeholder="底部操作",value="👉 👌 💦")
+                    .field
+                        label 時間
+                        .ts.underlined.fluid.input
+                            input#time(type="text",placeholder="10:10",value="10:10")
+                    .field
+                        label 管理員
+                        .ts.underlined.fluid.input
+                            input#admin(type="text",placeholder="admin",value="admin")
+            a#download.ts.fluid.bottom.attached.button(download='xiaoan.png',onclick='downloadimg()') 下載

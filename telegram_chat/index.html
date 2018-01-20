@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Telegram 對話產生器</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Tocas UI-->
+    <link rel="stylesheet" href="https://cdn.rawgit.com/TeaMeow/TocasUI/2.3.3/dist/tocas.css">
+    <!-- Tocas JS-->
+    <script src="https://cdn.rawgit.com/TeaMeow/TocasUI/2.3.2/dist/tocas.js"></script>
+    <!-- JQ https://cdnjs.com/libraries/jquery/-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <!-- Js-->
+    <script src="index.js"></script>
+        <meta name="description" content="沒有，這我沒說過">
+        <meta name="image" content="https://gnehs.github.io/Sealed/telegram_chat/og.png">
+        <meta itemprop="name" content="Telegram 對話產生器">
+        <meta itemprop="description" content="沒有，這我沒說過">
+        <meta itemprop="image" content="https://gnehs.github.io/Sealed/telegram_chat/og.png">
+        <meta name="twitter:card" content="summary">
+        <meta name="twitter:title" content="Telegram 對話產生器">
+        <meta name="twitter:description" content="沒有，這我沒說過">
+        <meta name="twitter:image:src" content="https://gnehs.github.io/Sealed/telegram_chat/og.png">
+        <meta name="og:title" content="Telegram 對話產生器">
+        <meta name="og:description" content="沒有，這我沒說過">
+        <meta name="og:image" content="https://gnehs.github.io/Sealed/telegram_chat/og.png">
+        <meta name="og:url" content="https://gnehs.github.io/Sealed/telegram_chat/index.html">
+        <meta name="og:site_name" content="Telegram 對話產生器">
+        <meta name="og:locale" content="zh_TW">
+        <meta name="og:type" content="website">
+    <style>
+      #owo{
+          background-color: #fff;
+          background-image: -webkit-linear-gradient(45deg,#efefef 25%,transparent 25%,transparent 75%,#efefef 75%,#efefef),-webkit-linear-gradient(45deg,#efefef 25%,transparent 25%,transparent 75%,#efefef 75%,#efefef);
+          background-position: 0 0,10px 10px;
+          background-size: 21px 21px;
+      }
+    </style>
+  </head>
+  <body onload="draw();">
+    <owo></owo>
+    <div class="ts snackbar">
+      <div class="content"></div>
+      <div class="action"></div>
+    </div>
+    <div class="ts basic link fluid top attached menu horizontally scrollable">
+      <div class="ts container"><a class="item" href="index.html">Telegram 對話產生器</a><a class="right item" href="https://github.com/gnehs/Sealed/tree/master/telegram_chat" target="_blank">GitHub</a></div>
+    </div>
+    <header class="ts heading vertically padded fluid slate">
+      <div class="ts container">
+        <h1 class="ts center aligned header">Telegram 對話產生器
+          <div class="sub header">沒有，這我沒說過</div>
+        </h1>
+      </div>
+    </header><br>
+    <div class="ts container">
+      <canvas class="ts centered rounded image" id="owo" width="512" height="92" style="border:1px solid #ffdada"></canvas><br>
+    </div>
+    <div class="ts very narrow container">
+      <div class="ts top attached segment">
+        <div class="ts form">
+          <div class="ts dividing header">Telegram 對話產生器</div>
+          <div class="field">
+            <label>名稱</label>
+            <div class="ts underlined fluid input">
+              <input id="name" type="text" placeholder="在此填入幹話" value="Yami Odymel http://yami.io/">
+            </div>
+          </div>
+          <div class="field">
+            <label>訊息</label>
+            <div class="ts underlined fluid input">
+              <input id="msg" type="text" placeholder="底部操作" value="👉 👌 💦">
+            </div>
+          </div>
+          <div class="field">
+            <label>時間</label>
+            <div class="ts underlined fluid input">
+              <input id="time" type="text" placeholder="10:10" value="10:10">
+            </div>
+          </div>
+          <div class="field">
+            <label>管理員</label>
+            <div class="ts underlined fluid input">
+              <input id="admin" type="text" placeholder="admin" value="admin">
+            </div>
+          </div>
+        </div>
+      </div><a class="ts fluid bottom attached button" id="download" download="xiaoan.png" onclick="downloadimg()">下載</a>
+    </div>
+  </body>
+</html>
