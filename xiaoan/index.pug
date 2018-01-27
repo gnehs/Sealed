@@ -1,0 +1,145 @@
+doctype html
+html
+	head
+		title 始春延期
+		meta(charset='utf-8')
+		meta(name='viewport', content='width=device-width, initial-scale=1.0')
+		link(rel='stylesheet', href='https://cdnjs.cloudflare.com/ajax/libs/tocas-ui/2.3.3/tocas.css')
+		link(href='//xiaoan.tocas-ui.com/ts.xiaoan.min.css',rel='stylesheet')
+		script(src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js')
+		script(src="https://cdnjs.cloudflare.com/ajax/libs/trianglify/1.2.0/trianglify.min.js")
+		script(src='index.js')
+		style.
+			#counter{
+				padding-bottom: 21%;
+				width: 720px;
+				margin: auto;
+				background-color: white;
+			}
+		include ./../../Jade/_tags.jade
+		+social_tags('始春延期','沒了始春，這世間彷彿瞬間沒了價值，我只是想追逐眼前的目標，卻越陷越深，你.......願意成為始春的戰友嗎','https://gnehs.github.io/Sealed/xiaoan/img/3d.jpg','https://gnehs.github.io/Sealed/xiaoan/index.html')
+	body
+		.ts.fluid.heading.big.padded.slate
+			.image
+				script.
+					var perviewImg = Trianglify({
+						width: 2560,
+						height: 2560,
+						stroke_width: 200,
+						cell_size: 100,
+					});
+					document.write('<img src="' + perviewImg.png() + '">');
+			span.header 始春延期
+			span.description 沒了始春，這世間彷彿瞬間沒了價值，我只是想追逐眼前的目標，卻越陷越深，你.......願意成為始春的戰友嗎
+		br
+		.ts.container
+			.tablet.or.large.device.only
+				br
+				h2.ts.center.aligned.icon.header 距離始春來臨還剩下
+				#counter.ts.read.only.embed
+					iframe(src='counter.html')
+			h2.ts.center.aligned.icon.header 始春是三小
+			.ts.segment 一個寧靜的午後，踢喵出現了，正所謂雷聲大雨點小，洨洨安宣布延期了，從二零一六一路延期至現在.......
+			h2.ts.center.aligned.icon.header 相關衍生作品
+			br
+			.ts.stackable.three.waterfall.cards
+				.ts.inverted.primary.card
+					.image
+						img(src='./img/spring.jpg')
+					.content
+						.header 為始春而生
+							.sub.header 始春，我們再度擁有始春，喔耶！！
+					.ts.fluid.bottom.attached.secondary.opinion.buttons
+						a.ts.button(target='_blank', href='https://t.me/gnehs_OwO', data-tooltip='透過 Telegram') 聯絡站長
+				.ts.inverted.primary.card
+					.image
+						img(src='./img/owo.jpg')
+					.content
+						.header 始春 - 桌布
+							.sub.header 利用始春妝點您的桌面。
+					.ts.fluid.bottom.attached.secondary.opinion.buttons
+						a.ts.button(target='_blank', href='https://goo.gl/1K3v6K') 下載
+				.ts.inverted.primary.card
+					.image
+						img(src='./img/sims.jpg')
+					.content
+						.header 始春 - 模擬市民4模組
+							.sub.header 利用始春豐富您的模擬市民。
+					.ts.fluid.bottom.attached.secondary.opinion.buttons
+						a.ts.button(target='_blank', href='https://goo.gl/ESBKCM') 下載
+				.ts.inverted.primary.card
+					.image
+						img(src='./img/theme.png')
+					.content
+						.header 洨安 Chrome 主題
+							.sub.header 利用洨安主題美化您的瀏覽器。
+					.ts.fluid.bottom.attached.secondary.opinion.buttons
+						a.ts.button(target='_blank', href='https://chrome.google.com/webstore/detail/%E6%B4%A8%E5%AE%89%E4%B8%BB%E9%A1%8C/ohlfohjddofbgcmfbihkhfkgfdbkpicd') 安裝
+				.ts.inverted.primary.card
+					.image
+						img(src='./img/avatar.png')
+					.content
+						.header 始春延期頭貼
+							.sub.header 給我們一天，願帶給你滿滿始春。
+					.ts.fluid.bottom.attached.secondary.opinion.buttons
+						a.ts.button(target='_blank', href='./img/avatar.png', download='始春延期.png') 下載
+				.ts.inverted.primary.card
+					.video
+						.ts.active.embed(class='16:9')
+							iframe(src='https://www.youtube.com/embed/QyTuG8r8wx0')
+					.content
+						.header 洨洨安大冒險
+							.sub.header 洨安的壓力很大，所以需要一些東西來紓解洨安的壓力。例如:洨洨安(?)
+					.ts.fluid.bottom.attached.secondary.opinion.buttons
+						a.ts.button(target='_blank', href='https://www.facebook.com/games/xiaoxiaoangame/') 玩遊戲
+						a.ts.button(target='_blank', href='https://shiichirpg.wordpress.com/') 開發者Blog
+				.ts.inverted.primary.card
+					.image
+						img(src='./img/3d.jpg')
+					.content
+						.header 洨安 3D 模型
+							.sub.header 由 Yank Chung 製作
+					.ts.fluid.bottom.attached.secondary.opinion.buttons
+						a.ts.button(target='_blank', href='https://my.pcloud.com/publink/show?code=XZ9WXIZiAQysot3X0Bct6V6d4icu7vyDcvy') 下載
+				.ts.inverted.primary.card
+					.image
+						img(src='https://i.imgur.com/ceoiLzD.png')
+					.content
+						.header 洨安教友證 2.0
+							.sub.header 為美好的世界獻上洨安教，一個沒有歧視的歡樂天堂
+					.ts.fluid.bottom.attached.secondary.opinion.buttons
+						a.ts.button(target='_blank', href='https://gnehs.github.io/Sealed/xiaoan_jiao_you_zheng/index.html') 前往
+				.ts.inverted.primary.card
+					.image
+						img(src='https://i.imgur.com/ceoiLzD.png')
+					.content
+						.header 洨安教友證 1.0
+							.sub.header 為美好的世界獻上洨安教，一個沒有歧視的歡樂天堂
+					.ts.fluid.bottom.attached.secondary.opinion.buttons
+						a.ts.button(target='_blank', href='https://gnehs.github.io/Sealed/xiaoan_jiao_you_zheng_1.0/index.html') 前往
+				.ts.inverted.primary.card
+					.image
+						img(src='https://i.imgur.com/ki8tUuk.png')
+					.content
+						.header Telegram 對話產生器
+							.sub.header 沒有，這我沒說過
+					.ts.fluid.bottom.attached.secondary.opinion.buttons
+						a.ts.button(target='_blank', href='https://gnehs.github.io/Sealed/xiaoan_jiao_you_zheng_1.0/index.html') 前往
+				.ts.inverted.primary.card
+					.image
+						img(src='https://i.imgur.com/Hy2lWj7.png')
+					.content
+						.header 黏黏安
+							.sub.header 洨洨安的載入動畫
+					.ts.fluid.bottom.attached.secondary.opinion.buttons
+						a.ts.button(target='_blank', href='https://gnehs.github.io/Sealed/sticky_xiaoan/demo.html') 前往
+				.ts.inverted.primary.card
+					.image
+						img(src='https://i.imgur.com/Bim7wY4.png')
+					.content
+						.header 洨洨安ｘ洨恐龍
+							.sub.header T-Rex runner 紀念始春滿 1.87 周年而製作
+					.ts.fluid.bottom.attached.secondary.opinion.buttons
+						a.ts.button(target='_blank', href='https://gnehs.github.io/Sealed/t-rex-runner/index.html') 前往
+
+

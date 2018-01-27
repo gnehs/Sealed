@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>始春延期</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="http://flipclockjs.com/_themes/flipclockjs/css/flipclock.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="http://flipclockjs.com/_themes/flipclockjs/js/flipclock/flipclock.js"></script>
+    <script src="index.js"></script>
+    <script>
+      $(document).ready(function() {
+          $('.spring.clock').FlipClock((Date.now()-1455379200000)/10000, {
+              clockFace: 'DailyCounter'
+          });
+      });
+      
+    </script>
+  </head>
+  <body><br>
+    <div class="spring clock"></div>
+  </body>
+</html>
