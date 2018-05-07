@@ -38,3 +38,5 @@
 [Facebook Loader](https://gnehs.github.io/Sealed/facebook_loader/index.html)
 
 [Telegram 對話產生器](https://gnehs.github.io/Sealed/telegram_chat/index.html)
+
+[ㄉㄌㄐㄕ數學題庫搜尋機](https://gnehs.github.io/Sealed/lazySearch/index.html)

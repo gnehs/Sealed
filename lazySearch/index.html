@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>TLHCM Lazy Search</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/tocas-ui/2.3.3/tocas.css" rel="stylesheet">
+    <link href="/css/style.css" rel="stylesheet">
+    <script src="https://apis.google.com/js/client.js?onload=onClientLoad"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://xiaoan.tocas-ui.com/ts.xiaoan.min.js"></script>
+    <script src="/js/script.js"></script>
+  </head>
+  <body>
+    <div class="ts fluid heading slate">
+      <div class="ts narrow container"><span class="header">TLHCM Lazy Search</span><span class="description">幫助你快速搜尋</span></div>
+    </div>
+    <div class="ts narrow container"><br>
+      <div class="ts labeled action fluid input">
+        <div class="ts label">TLHCM</div>
+        <input id="queryInput" type="text" placeholder="輸入 TLHCM 後方數字" v>
+        <div class="ts buttons">
+          <button class="ts primary button" id="searchButton">搜尋</button>
+          <div class="or"></div>
+          <button class="ts button" id="pr">上一題</button>
+          <div class="or"></div>
+          <button class="ts positive button" id="ne">下一題</button>
+        </div>
+      </div><br><br>
+      <div class="ts embed">
+        <iframe id="video" src="https://www.youtube.com/embed/MQm7zv7QLAA?rel=0&amp;controls=0" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen=""></iframe>
+      </div>
+    </div>
+  </body>
+</html>

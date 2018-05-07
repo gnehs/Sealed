@@ -1,0 +1,33 @@
+doctype html
+html
+    head
+        title TLHCM Lazy Search
+        meta(charset='utf-8')
+        meta(name='viewport', content='width=device-width, initial-scale=1.0')
+        link(href='https://cdnjs.cloudflare.com/ajax/libs/tocas-ui/2.3.3/tocas.css',rel='stylesheet')
+        link(href='/css/style.css', rel='stylesheet')
+        script(src='https://apis.google.com/js/client.js?onload=onClientLoad')
+        script(src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js')
+        script(src='https://xiaoan.tocas-ui.com/ts.xiaoan.min.js')
+        script(src='/js/script.js')
+    body
+        .ts.fluid.heading.slate
+            .ts.narrow.container
+                span.header TLHCM Lazy Search
+                span.description 幫助你快速搜尋
+        
+        .ts.narrow.container
+            br
+            .ts.labeled.action.fluid.input
+                .ts.label TLHCM
+                input#queryInput(type='text', placeholder='輸入 TLHCM 後方數字',v)
+                .ts.buttons
+                    button#searchButton.ts.primary.button 搜尋
+                    .or
+                    button#pr.ts.button 上一題
+                    .or
+                    button#ne.ts.positive.button 下一題
+            br
+            br
+            .ts.embed
+                iframe#video(src='https://www.youtube.com/embed/MQm7zv7QLAA?rel=0&controls=0', frameborder='0', allow='autoplay; encrypted-media', allowfullscreen='')
