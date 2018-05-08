@@ -2,7 +2,7 @@ $(document).ready(function() {
     $("#searchButton").on("click", function() {
         var query = $("#queryInput").val();
         if (query) {
-            search($("#queryInput").val());
+            loadYoutubeService($("#queryInput").val());
             $("#searchButton").addClass('loading')
         }
     });
@@ -10,7 +10,7 @@ $(document).ready(function() {
         var query = Number($("#queryInput").val()) - 1;
         $("#queryInput").val(query)
         if (query) {
-            search($("#queryInput").val());
+            loadYoutubeService($("#queryInput").val());
             $("#pr").addClass('loading')
         }
     });
@@ -18,18 +18,21 @@ $(document).ready(function() {
         var query = Number($("#queryInput").val()) + 1;
         $("#queryInput").val(query)
         if (query) {
-            search($("#queryInput").val());
+            loadYoutubeService($("#queryInput").val());
             $("#ne").addClass('loading')
         }
     });
 });
 
-//搜尋
-function search(query) {
+//抓資料囉
+function loadYoutubeService(query) {
     gapi.client.load('youtube', 'v3', function() {
         gapi.client.setApiKey('AIzaSyBYXzGDkIxNjfMx4L9Wsr4W-A7W05s1l50');
         search(query);
     });
+}
+//搜尋
+function search(query) {
     var request = gapi.client.youtube.search.list({
         part: 'snippet',
         q: 'TLHCM' + query,
