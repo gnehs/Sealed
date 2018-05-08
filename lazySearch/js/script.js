@@ -50,6 +50,7 @@ function search(query) {
         else {
             snackbar("找不到該影片");
             $("#queryInput").val('23101')
+            $('#video').attr('src', 'https://www.youtube.com/embed/MQm7zv7QLAA?rel=0&controls=0')
         }
     });
 }
