@@ -1,45 +1,35 @@
 $(document).ready(function() {
-    //替按鈕綁上事件
     $("#searchButton").on("click", function() {
         var query = $("#queryInput").val();
-        //防呆
         if (query) {
-            loadYoutubeService($("#queryInput").val());
-            console.log(query + " 搜尋中....");
+            search($("#queryInput").val());
             $("#searchButton").addClass('loading')
         }
     });
     $("#pr").on("click", function() {
         var query = Number($("#queryInput").val()) - 1;
         $("#queryInput").val(query)
-            //防呆
         if (query) {
-            loadYoutubeService($("#queryInput").val());
-            console.log(query + " 搜尋中....");
+            search($("#queryInput").val());
             $("#pr").addClass('loading')
         }
     });
     $("#ne").on("click", function() {
         var query = Number($("#queryInput").val()) + 1;
         $("#queryInput").val(query)
-            //防呆
         if (query) {
-            loadYoutubeService($("#queryInput").val());
-            console.log(query + " 搜尋中....");
+            search($("#queryInput").val());
             $("#ne").addClass('loading')
         }
     });
 });
 
-//向google 使用youtube服務
-function loadYoutubeService(query) {
+//搜尋
+function search(query) {
     gapi.client.load('youtube', 'v3', function() {
         gapi.client.setApiKey('AIzaSyBYXzGDkIxNjfMx4L9Wsr4W-A7W05s1l50');
         search(query);
     });
-}
-//搜尋
-function search(query) {
     var request = gapi.client.youtube.search.list({
         part: 'snippet',
         q: 'TLHCM' + query,
