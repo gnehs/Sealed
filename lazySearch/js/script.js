@@ -4,6 +4,7 @@ $(document).ready(function() {
         if (query) {
             loadYoutubeService($("#queryInput").val());
             $("#searchButton").addClass('loading')
+            $("#dimmer").addClass('active')
         }
     });
     $("#pr").on("click", function() {
@@ -12,6 +13,7 @@ $(document).ready(function() {
         if (query) {
             loadYoutubeService($("#queryInput").val());
             $("#pr").addClass('loading')
+            $("#dimmer").addClass('active')
         }
     });
     $("#ne").on("click", function() {
@@ -20,6 +22,7 @@ $(document).ready(function() {
         if (query) {
             loadYoutubeService($("#queryInput").val());
             $("#ne").addClass('loading')
+            $("#dimmer").addClass('active')
         }
     });
 });
@@ -41,6 +44,7 @@ function search(query) {
 
     request.execute(function(response) {
         $("#searchButton,#pr,#ne").removeClass('loading')
+        $("#dimmer").removeClass('active')
         if (response.items[0])
             $('#video').attr('src', 'https://www.youtube.com/embed/' + response.items[0].id.videoId + '?rel=0')
         else {
