@@ -44,7 +44,6 @@ function search(query) {
 
     request.execute(function(response) {
         $("#searchButton,#pr,#ne").removeClass('loading')
-        $("#dimmer").removeClass('active')
         if (response.items[0])
             $('#video').attr('src', 'https://www.youtube.com/embed/' + response.items[0].id.videoId + '?rel=0')
         else {
@@ -52,5 +51,6 @@ function search(query) {
             $("#queryInput").val('23101')
             $('#video').attr('src', 'https://www.youtube.com/embed/MQm7zv7QLAA?rel=0&controls=0')
         }
+        $('#video').on("load", () => $("#dimmer").removeClass('active'));
     });
 }
