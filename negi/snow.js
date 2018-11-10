@@ -1,5 +1,6 @@
 (function () {
     //https://codepen.io/epilande/pen/owAnm?editors=0100#0
+    let qty = 128
     let random = i => Math.floor(Math.random() * i)
     let injectCss = `.snow {
         position: fixed;
@@ -25,7 +26,7 @@
       }
     }
     `
-    for (i = 0; i < 255; i++) {
+    for (i = 0; i < qty; i++) {
         let flakeSize = 5 + random(15)
         injectCss += `.flake:nth-child(${i+1}){
                width:  ${flakeSize}px;
@@ -44,10 +45,10 @@
 
     var snow = document.createElement("div");
     snow.className = "snow";
-    for (var i = 0; i < 255; i++) {
+    for (var i = 0; i < qty; i++) {
         let flake = document.createElement("div")
         flake.className = "flake"
         snow.appendChild(flake)
     }
-    document.body.insertBefore(snow, document.body.childNodes[0]);
+    document.body.appendChild(snow);
 })();
