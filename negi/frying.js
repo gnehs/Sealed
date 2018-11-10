@@ -2,9 +2,14 @@
     //https://codepen.io/epilande/pen/owAnm?editors=0100#0
     let qty = 128
     let random = i => Math.floor(Math.random() * i)
-    let containerClass = Math.random().toString(36).substring(2);
-    let objectClass = Math.random().toString(36).substring(2);
-    let keyframesName = Math.random().toString(36).substring(2);
+    let containerClass = Math.random().toString(36).substring(2).replace(/\d+/g, '')
+    let objectClass = Math.random().toString(36).substring(2).replace(/\d+/g, '')
+    let keyframesName = [
+        Math.random().toString(36).substring(2).replace(/\d+/g, ''),
+        Math.random().toString(36).substring(2).replace(/\d+/g, ''),
+        Math.random().toString(36).substring(2).replace(/\d+/g, ''),
+        Math.random().toString(36).substring(2).replace(/\d+/g, '')
+    ]
     let injectCss = `
     .${containerClass} {
         position: fixed;
@@ -13,30 +18,59 @@
         height: 100vh;
         top: 0;
         pointer-events: none;
+        overflow: hidden;
     }
     .${objectClass} {
         position: absolute;
         border-radius: 50%;
-        transform: translateY(0) rotateX(0) rotateY(0);
         background-size: 100%;
     }
-    @keyframes ${keyframesName} {
+    @keyframes ${keyframesName[0]} {
+        0%{
+            transform: translateY(0) rotate(0deg) scale(2);
+        }
         100% {
-            transform: translateY(1000px) rotateX(15deg) rotateY(24deg);
+            transform: translateY(200vh) rotate(2500deg) scale(0);
+        }
+    }
+    @keyframes ${keyframesName[1]} {
+        0%{
+            transform: translateY(0) rotate(2500deg) scale(0);
+        }
+        100% {
+            transform: translateY(200vh) rotate(0deg) scale(1);
             opacity: 0;
+        }
+    }
+    @keyframes ${keyframesName[2]} {
+        0%{
+            transform: translateY(0) rotate(0deg);
+        }
+        100% {
+            transform: translateY(200vh) rotate(1200deg) scale(1.2);
+        }
+    }
+    @keyframes ${keyframesName[3]} {
+        0%{
+            transform: translateY(0) rotate(1200deg);
+        }
+        100% {
+            transform: translateY(200vh) rotate(0deg) scale(.7);
         }
     }
     `
     for (i = 0; i < qty; i++) {
-        let flakeSize = 5 + random(15)
+        let flakeSize = 50 + random(80)
         injectCss += `.${objectClass}:nth-child(${i+1}){
-               width:  ${flakeSize}px;
-              height:  ${flakeSize}px;
-                 top:  ${-700+random(700)}px;
-                left:  ${random(100)}%;
-    background-image:  url("https://gnehs.github.io/Sealed/negi/img/frying${random(6)}.png");
-     background-size:  100%;
-           animation:  ${15+random(55)}s ${keyframesName} linear infinite;
+                       width:  ${flakeSize}px;
+                      height:  ${flakeSize}px;
+                         top:  ${-700+random(200)}px;
+                        left:  ${random(100)}%;
+            background-image:  url("https://gnehs.github.io/Sealed/negi/img/frying${1+random(5)}.png");
+             background-size:  100%;
+           background-repeat:  no-repeat; 
+         background-position:  center center; 
+                   animation:  ${5+random(10)}s ${keyframesName[random(4)]} linear infinite;
 	    }`
     }
     var styleElem = document.createElement('style');

@@ -2,9 +2,9 @@
     //https://codepen.io/epilande/pen/owAnm?editors=0100#0
     let qty = 128
     let random = i => Math.floor(Math.random() * i)
-    let containerClass = Math.random().toString(36).substring(2);
-    let objectClass = Math.random().toString(36).substring(2);
-    let keyframesName = Math.random().toString(36).substring(2);
+    let containerClass = Math.random().toString(36).substring(2).replace(/\d+/g, '')
+    let objectClass = Math.random().toString(36).substring(2).replace(/\d+/g, '')
+    let keyframesName = Math.random().toString(36).substring(2).replace(/\d+/g, '')
     let injectCss = `
     .${containerClass} {
         position: fixed;
