@@ -14,7 +14,7 @@
         top: 0;
         pointer-events: none;
     }
-    .${containerClass}>.${objectClass} {
+    .${objectClass} {
         position: absolute;
         border-radius: 50%;
         transform: translateY(0) rotateX(0) rotateY(0);
@@ -31,7 +31,7 @@
     `
     for (i = 0; i < qty; i++) {
         let flakeSize = 5 + random(15)
-        injectCss += `.${containerClass}>.${objectClass}:nth-child(${i+1}){
+        injectCss += `.${objectClass}:nth-child(${i+1}){
                width:  ${flakeSize}px;
               height:  ${flakeSize}px;
                  top:  ${-700+random(700)}px;
