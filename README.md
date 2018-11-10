@@ -40,3 +40,5 @@
 [Telegram 對話產生器](https://gnehs.github.io/Sealed/telegram_chat/index.html)
 
 [ㄉㄌㄐㄕ數學題庫搜尋機](https://gnehs.github.io/Sealed/lazySearch/index.html)
+
+[灑滿各種東東](https://gnehs.github.io/Sealed/negi/index.html)
