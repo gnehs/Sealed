@@ -15,12 +15,13 @@ html
 			meta(property='og:image', content='http://i.imgur.com/xQuQUBg.png')
 			meta(property='article:author', content='https://www.facebook.com/gnehsouo/')
 	body
+		- let loadjs = js => `javascript:d=document;s=d.createElement('script');s.src='${js}';b=d.getElementsByTagName('body')[0];b.appendChild(s);void(0);`
 		.ts.large.heading.center.aligned.slate
 			span.header 灑滿蔥花
 			span.description 點擊下面按鈕來灑滿蔥花
 			.action
 				.ts.primary.buttons
-					a.ts.button(href=`javascript:d=document;s=d.createElement('script');s.src='https://gnehs.github.io/Sealed/negi/negi.js';b=d.getElementsByTagName('body')[0];b.appendChild(s);void(0);`)
+					a.ts.button(href=loadjs('https://gnehs.github.io/Sealed/negi/negi.js'))
 						| 灑滿蔥花
 					a.ts.button(href='http://www.hinablue.me/negi.html')
 						| 原作者頁面
@@ -29,7 +30,7 @@ html
 			span.description 點擊下面按鈕來下雪
 			.action
 				.ts.primary.buttons
-					a.ts.button(href=`javascript:d=document;s=d.createElement('script');s.src='https://gnehs.github.io/Sealed/negi/snow.js';b=d.getElementsByTagName('body')[0];b.appendChild(s);void(0);`)
+					a.ts.button(href=loadjs('https://gnehs.github.io/Sealed/negi/snow.js'))
 						| 下雪
 					a.ts.button(href='https://codepen.io/epilande/pen/owAnm')
 						| 原作者頁面
@@ -38,6 +39,6 @@ html
 			span.description 點擊下面按鈕來炸東西
 			.action
 				.ts.primary.buttons
-					a.ts.button(href=`javascript:d=document;s=d.createElement('script');s.src='https://gnehs.github.io/Sealed/negi/frying.js';b=d.getElementsByTagName('body')[0];b.appendChild(s);void(0);`)
+					a.ts.button(href=loadjs('https://gnehs.github.io/Sealed/negi/frying.js'))
 						| 炸東西
 	
