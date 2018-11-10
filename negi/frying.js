@@ -19,7 +19,6 @@
         border-radius: 50%;
         transform: translateY(0) rotateX(0) rotateY(0);
         background-size: 100%;
-        background-image: linear-gradient(180deg, rgba(255, 255, 255, 0) 30%, #ffffff 50%, #ffffff 60%, rgba(255, 255, 255, 0) 60%), linear-gradient(90deg, rgba(255, 255, 255, 0) 30%, #ffffff 50%, #ffffff 60%, rgba(255, 255, 255, 0) 60%), linear-gradient(45deg, rgba(255, 255, 255, 0) 33%, #ffffff 53%, #ffffff 57%, rgba(255, 255, 255, 0) 65%), linear-gradient(135deg, rgba(255, 255, 255, 0) 33%, #ffffff 53%, #ffffff 57%, rgba(255, 255, 255, 0) 65%);
     }
     @keyframes ${keyframesName} {
         100% {
@@ -35,8 +34,8 @@
               height:  ${flakeSize}px;
                  top:  ${-700+random(700)}px;
                 left:  ${random(100)}%;
-             opacity:  ${(random(50)+50)*0.01};
-              filter:  blur(${2+random(2)}px);
+    background-image:  url("https://gnehs.github.io/Sealed/negi/img/frying${random(6)}.png");
+     background-size:  100%;
            animation:  ${15+random(55)}s ${keyframesName} linear infinite;
 	    }`
     }
